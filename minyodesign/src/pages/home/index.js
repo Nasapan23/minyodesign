@@ -1,18 +1,23 @@
-import React from 'react';
-import DataSquare from '@/components/data-square';
-import TestPage from "@/utils/testpage";
+'use client';  // Mark the component as client-side
 
+import React from 'react';
+import LogoPart from '@/components/logo-part';
+import Navigation from '@/components/navigation';
+import useIsMobile from '@/hooks/UseIsMobile'; // Import the custom hook
+import PortoFolio from '@/components/portofolio';
+import Prezentare from '@/components/presentation';
 
 const Home = () => {
+    const isMobile = useIsMobile(); // Using the custom hook
+
     return (
         <div>
-            <DataSquare>
-                <foreignObject x="50" y="50" width="955.4" height="705.1">
-                    <div xmlns="http://www.w3.org/1999/xhtml" className="h-full w-full flex items-center justify-center">
-                        <TestPage />
-                    </div>
-                </foreignObject>
-            </DataSquare>
+            {/* Conditional rendering based on screen size */}
+            {isMobile && <Navigation />}
+            <LogoPart />
+            {!isMobile && <Navigation />}
+            <Prezentare />
+            <PortoFolio />
         </div>
     );
 };
