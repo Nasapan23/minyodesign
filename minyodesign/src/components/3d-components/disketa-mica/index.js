@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useGLTF } from '@react-three/drei';
 
 export function DisketaMica({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0] }) {

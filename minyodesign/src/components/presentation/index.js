@@ -8,6 +8,12 @@ import DisketaMare from '../3d-components/disketa-mare';
 import useIsMobile from '@/hooks/UseIsMobile'; // Import the custom hook
 import * as THREE from 'three';
 
+
+
+const raycaster = new THREE.Raycaster();
+const mouseVector = new THREE.Vector2();
+
+
 // Floating and interactive component for disketa
 const InteractiveDisketa = ({ children, initialPosition, floatSpeed = 0.5, amplitude = 0.2, phaseOffset = 0 }) => {
   const ref = useRef();
@@ -19,29 +25,41 @@ const InteractiveDisketa = ({ children, initialPosition, floatSpeed = 0.5, ampli
   // The initial rotation (zero) to which the disk will return
   const originalRotation = new THREE.Vector3(0, 0, 0);
 
-  // Use the useFrame hook to apply floating and hovering effects
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-
-    // Apply floating effect
-    ref.current.position.y = initialPosition[1] + Math.sin(time * floatSpeed + phaseOffset) * amplitude;
-
-    // If hovered, rotate according to the mouse position
+    const { mouse, viewport } = state;
+  
+    // Normalized mouse coordinates between -1 and 1 (left to right, top to bottom)
+    const mouseX = (mouse.x * viewport.width) / 2; // X-axis, viewport dependent
+    const mouseY = (mouse.y * viewport.height) / 2; // Y-axis, viewport dependent
+  
+    // Define the rotation scale based on how much rotation you want (adjust these numbers as needed)
+    const rotationScaleX = 0.02; // Adjust this value for X rotation sensitivity
+    const rotationScaleY = 0.02; // Adjust this value for Y rotation sensitivity
+  
+    // Only apply rotation if the object is hovered over
     if (hovered && !isMobile) {
-      const { mouse } = state;
-      const targetRotation = new THREE.Vector3(
-        mouse.y * 0.2, // X rotation based on mouse Y
-        mouse.x * 0.2, // Y rotation based on mouse X
-        0
+      ref.current.rotation.x = THREE.MathUtils.lerp(
+        ref.current.rotation.x,
+        mouseY * rotationScaleX,  // Rotate around X based on mouse Y
+        0.1
       );
-      ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, targetRotation.x, 0.1);
-      ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, targetRotation.y, 0.1);
+      ref.current.rotation.y = THREE.MathUtils.lerp(
+        ref.current.rotation.y,
+        mouseX * rotationScaleY,  // Rotate around Y based on mouse X
+        0.1
+      );
     } else {
-      // If not hovered, smoothly return to original rotation
+      // Smoothly return to original rotation if not hovered
       ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, originalRotation.x, 0.1);
       ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, originalRotation.y, 0.1);
     }
+  
+    // Floating effect
+    ref.current.position.y = initialPosition[1] + Math.sin(time * floatSpeed + phaseOffset) * amplitude;
   });
+  
+  
 
   return (
     <group
