@@ -1,117 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useState, useMemo, useRef } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
 import { useSpring, animated } from '@react-spring/three';
-import { useSwipeable } from 'react-swipeable'; // Importing react-swipeable
+import { useSwipeable } from 'react-swipeable';
 import { DisketaMock } from '@/components/3d-components/diskete-portofoliu/disketa-mock';
-import { Sphere, MeshBasicMaterial } from '@react-three/drei';
+import { DisketaAtelier } from "@/components/3d-components/proiecte/gd/disketa-atelier.js"
+import { DisketaBlend } from "@/components/3d-components/proiecte/gd/disketa-blend.js";
+import { DisketaCrypto} from "@/components/3d-components/proiecte/gd/disketa-crypto.js";
+import { DisketaCulinary} from "@/components/3d-components/proiecte/gd/disketa-culinary.js";
+import { DisketaLiftUp } from "@/components/3d-components/proiecte/gd/disketa-liftup.js";
+import { PointLightHelper, DirectionalLightHelper } from 'three';
 
-// Original positions and rotations for the layout
-const positionsAndRotations = [
-  {
-    position: [0, -4, -2],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [1, 1, 1],
-  },
-  {
-    position: [-6, -3, -2.5],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [0.8, 0.8, 0.8],
-  },
-  {
-    position: [6, -3, -2.5],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [0.8, 0.8, 0.8],
-  },
-  {
-    position: [-12, -3, -4],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [0.7, 0.7, 0.7],
-  },
-  {
-    position: [12, -3, -4],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [0.7, 0.7, 0.7],
-  },
-  {
-    position: [-6, -3, -6],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [0.6, 0.6, 0.6],
-  },
-  {
-    position: [6, -3, -6],
-    rotation: [0, -Math.PI / 2, 0],
-    scale: [0.6, 0.6, 0.6],
-  },
-];
+const models = [DisketaAtelier, DisketaBlend, DisketaCrypto, DisketaCulinary, DisketaLiftUp];
 
-const Portofoliu = () => {
-  const [index, setIndex] = useState(0); // Tracks which object is at the center
+function LightHelpers({ pointLightRef, directionalLightRef }) {
+  const { scene } = useThree();
 
-  // Gesture handling (swipe)
+  // Adding helpers to the scene when the component mounts
+  useMemo(() => {
+    if (pointLightRef.current) {
+      const pointLightHelper = new PointLightHelper(pointLightRef.current, 1);
+      scene.add(pointLightHelper);
+    }
+    if (directionalLightRef.current) {
+      const directionalLightHelper = new DirectionalLightHelper(directionalLightRef.current, 1);
+      scene.add(directionalLightHelper);
+    }
+  }, [scene, pointLightRef, directionalLightRef]);
+
+  return null;
+}
+
+export default function Carousel() {
+  const [activeIndex, setActiveIndex] = useState(Math.floor(models.length / 2));
+
+  // Refs for lights to attach helpers
+  const pointLightRef = useRef();
+  const directionalLightRef = useRef();
+
+  // Swipeable handlers
   const handlers = useSwipeable({
-    onSwipedLeft: () => handleSwipe(1),
-    onSwipedRight: () => handleSwipe(-1),
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Also tracks mouse drags
+    trackMouse: true,
   });
 
-  // Function to handle the swipe direction
-  const handleSwipe = (direction) => {
-    setIndex((prevIndex) => (prevIndex + direction + positionsAndRotations.length) % positionsAndRotations.length);
+  const handleNext = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % models.length);
   };
 
-  // Array to store springs for each object, pushing items from center to sides in sequence
-  const animatedSprings = positionsAndRotations.map((_, i) => {
-    const newIndex = (index + i) % positionsAndRotations.length;
-    const { position, rotation, scale } = positionsAndRotations[newIndex];
-    return useSpring({
-      position,
-      rotation,
-      scale,
-      config: { tension: 120, friction: 20 },
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + models.length) % models.length);
+  };
+
+  // Calculate positions and scales for each item based on activeIndex
+  const positions = useMemo(() => {
+    return models.map((_, index) => {
+      const offset = index - activeIndex;
+      const scaleFactor = Math.max(0.5, 1 - Math.abs(offset) * 0.2);
+      const scale = [scaleFactor, scaleFactor, scaleFactor];
+      const zPosition = -2 - Math.abs(offset);
+      const xPosition = offset * 4;
+      const position = offset === 0 ? [0, -5, -1] : [xPosition, -5, zPosition];
+      return { position, scale };
     });
-  });
+  }, [activeIndex]);
 
   return (
-    <div {...handlers} style={{ height: '100vh', width: '100vw', touchAction: 'none' }}>
-      <Canvas
-        shadows
-        gl={{ alpha: false }} // Disable transparency to force a solid background color
-        onCreated={({ gl }) => {
-          gl.setClearColor('#ffffff'); // Set the background to white
-        }}
-      >
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[5, 5, 5]} intensity={0.8} />
+    <div
+      {...handlers}
+      className="flex justify-center items-center h-screen w-full bg-black"
+    >
+      <div className="w-full h-full">
+        <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
+          <ambientLight intensity={0.5} />
+          <pointLight ref={pointLightRef} position={[5, -10, 10]} intensity={100} color={"#ff758f"}/>
+          <directionalLight ref={directionalLightRef} position={[5, -10, 13]} intensity={1} />
 
-        {/* Added point light at the specific position to lighten the face of the disks */}
-        <pointLight
-          position={[0, -5, -3]}
-          intensity={10} // Adjust this value to control brightness
-          distance={10}  // The range of the light
-          decay={2}      // The rate at which the light diminishes
-        />
+          {models.map((ModelComponent, index) => {
+            const { position, scale } = positions[index];
 
-        {/* Visual representation of the point light */}
-        <mesh position={[0, -5, -3]}>
-          <sphereGeometry args={[0.2, 16, 16]} />
-          <meshBasicMaterial color="yellow" />
-        </mesh>
+            const { animatedPosition, animatedScale } = useSpring({
+              animatedPosition: position,
+              animatedScale: scale,
+              config: { tension: 300, friction: 30 },
+            });
 
-        {/* Animated positioning of the 3D objects */}
-        {animatedSprings.map((animatedProps, i) => (
-          <animated.group
-            key={i}
-            position={animatedProps.position}
-            rotation={animatedProps.rotation}
-            scale={animatedProps.scale}
-          >
-            <DisketaMock />
-          </animated.group>
-        ))}
-      </Canvas>
+            return (
+              <animated.group
+                key={index}
+                position={animatedPosition.to((x, y, z) => [x, y, z])}
+                rotation={[0, -Math.PI / 2, 0]}
+                scale={animatedScale}
+              >
+                <ModelComponent />
+              </animated.group>
+            );
+          })}
+        </Canvas>
+      </div>
     </div>
   );
-};
-
-export default Portofoliu;
+}

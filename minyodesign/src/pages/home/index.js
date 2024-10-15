@@ -11,7 +11,7 @@ const Home = () => {
     const isMobile = useIsMobile(); // Using the custom hook
 
     return (
-        <div>
+        <div >
             {/* Conditional rendering based on screen size */}
             {isMobile && <Navigation />}
             <LogoPart />

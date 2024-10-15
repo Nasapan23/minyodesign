@@ -92,7 +92,7 @@ const Prezentare = () => {
         gl={{ alpha: false }} // Disable transparency to force background color
         camera={{ position: [0, 0, 10], fov: 50 }} // Camera settings
         onCreated={({ gl }) => {
-          gl.setClearColor('white'); // Set the background to white
+          gl.setClearColor('black'); // Set the background to white
         }}
       >
         {/* Ambient light to softly illuminate the entire scene */}
