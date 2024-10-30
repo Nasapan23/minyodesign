@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function DisketaAtelier({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
+export default function DisketaAtelier({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
   const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-atelier.glb')
 
   return (
@@ -173,4 +173,3 @@ export function DisketaAtelier({ position = [0, 0, 0], scale = [1, 1, 1], rotati
 
 useGLTF.preload('/3DObjects/gd/disketa-atelier.glb')
 
-export default DisketaAtelier;

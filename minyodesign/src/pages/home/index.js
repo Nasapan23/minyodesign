@@ -1,25 +1,42 @@
-'use client';  // Mark the component as client-side
+"use client";
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import useIsMobile from '@/hooks/UseIsMobile';
+import LoadingScreen from '@/components/loadingScreen';
 
-import React from 'react';
-import LogoPart from '@/components/logo-part';
-import Navigation from '@/components/navigation';
-import useIsMobile from '@/hooks/UseIsMobile'; // Import the custom hook
-import Prezentare from '@/components/presentation';
-import Portofoliu from '@/components/portofolio';
+// Lazy load components
+const LogoPart = lazy(() => import('@/components/logo-part'));
+const Navigation = lazy(() => import('@/components/navigation'));
+const Prezentare = lazy(() => import('@/components/presentation'));
+const GraphicDesignCarousel = lazy(() => import('@/components/portofolio/graphicDesign'));
 
 const Home = () => {
-    const isMobile = useIsMobile(); // Using the custom hook
+  const isMobile = useIsMobile(); // Detect mobile view
+  const [isLoading, setIsLoading] = useState(true); // Track loading state
 
-    return (
-        <div >
-            {/* Conditional rendering based on screen size */}
-            {isMobile && <Navigation />}
-            <LogoPart />
-            {!isMobile && <Navigation />}
-            <Prezentare />
-            <Portofoliu />
-        </div>
-    );
+  // Simulate a fixed 3-second loading delay
+  useEffect(() => {
+    const renderTimeout = setTimeout(() => {
+      setIsLoading(false); // Hide the loading screen after 3 seconds
+    }, 3000); // 3000 ms = 3 seconds
+
+    return () => clearTimeout(renderTimeout); // Clean up timeout
+  }, []);
+
+  return (
+    <div>
+      {isLoading ? (
+        <LoadingScreen />
+      ) : (
+        <Suspense fallback={<LoadingScreen />}>
+          {isMobile && <Navigation />}
+          <LogoPart />
+          {!isMobile && <Navigation />}
+          <Prezentare />
+          <GraphicDesignCarousel />
+        </Suspense>
+      )}
+    </div>
+  );
 };
 
 export default Home;

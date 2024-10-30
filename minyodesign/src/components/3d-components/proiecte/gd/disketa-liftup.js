@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
+export default function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
   const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-liftup.glb')
 
   return (
@@ -172,5 +172,3 @@ export function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1], rotatio
 }
 
 useGLTF.preload('/3DObjects/gd/disketa-liftup.glb')
-
-export default DisketaLiftUp;

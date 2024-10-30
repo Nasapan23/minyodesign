@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
+export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
   const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-oala.glb')
 
   return (

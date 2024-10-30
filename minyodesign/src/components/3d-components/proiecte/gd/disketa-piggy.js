@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function DisketaPiggy({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
+export default function DisketaPiggy({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
   const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-piggy.glb')
 
   return (
