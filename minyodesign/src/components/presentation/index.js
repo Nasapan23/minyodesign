@@ -8,11 +8,8 @@ import DisketaMare from '../3d-components/disketa-mare';
 import useIsMobile from '@/hooks/UseIsMobile'; // Import the custom hook
 import * as THREE from 'three';
 
-
-
 const raycaster = new THREE.Raycaster();
 const mouseVector = new THREE.Vector2();
-
 
 // Floating and interactive component for disketa
 const InteractiveDisketa = ({ children, initialPosition, floatSpeed = 0.5, amplitude = 0.2, phaseOffset = 0 }) => {
@@ -86,14 +83,15 @@ const Prezentare = () => {
   const disketaMareScale = isMobile ? [0.7, 0.7, 0.7] : [1.5, 1.5, 1.5];
 
   return (
-    <div style={{ height: '100vh', width: '100vw' }}>
+    <div style={{ height: '100vh', width: '100vw', position: 'relative' }}>
+    {/* Add background elements */}
+      <div className="stars"></div>
+      <div className="twinkling"></div>
+      <div className="clouds hidden md:block"></div>
       <Canvas
         shadows
-        gl={{ alpha: false }} // Disable transparency to force background color
+        gl={{ alpha: true }} // Disable transparency to force background color
         camera={{ position: [0, 0, 10], fov: 50 }} // Camera settings
-        onCreated={({ gl }) => {
-          gl.setClearColor('black'); // Set the background to white
-        }}
       >
         {/* Ambient light to softly illuminate the entire scene */}
         <ambientLight intensity={0.6} />

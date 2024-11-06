@@ -1,5 +1,6 @@
 // In your main index.js or wherever you handle routing
-import Home from "@/pages/home";
+import { ModalProvider } from "@/hooks/ModalContext";
+import Home from "../../home";
 
 function App() {
     return (

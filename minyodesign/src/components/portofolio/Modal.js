@@ -4,7 +4,7 @@ import '@/styles/modal.css';
 
 const Modal = ({ id, name, logo, description, images, onClose }) => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
+    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
       <div className="modal-wrapper">
         {/* Back Layer */}
         <div className="back-layer"></div>
@@ -12,12 +12,14 @@ const Modal = ({ id, name, logo, description, images, onClose }) => {
         {/* Modal Content */}
         <div className="modal-container p-2 overflow-y-auto">
           {/* Close Button */}
+          <div className=" ">
           <button
             onClick={onClose}
             className="absolute top-6 right-12 text-black text-xl w-12 h-12 flex items-center justify-center bg-transparent z-10 close-button"
           >
             <ButtonXSVG />
           </button>
+          </div>
 
           <div className="w-full h-full p-6 bg-[#5CA1B7] rounded-lg inner-content overflow-y-auto">
             {/* Header Section (Logo + Text) */}

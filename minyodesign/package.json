@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@react-spring/three": "^9.7.5",
-    "@react-three/drei": "^9.114.0",
+    "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^8.17.9",
     "@react-three/postprocessing": "^2.16.3",
     "@use-gesture/react": "^10.3.1",
+    "babel-plugin-glsl": "^1.0.0",
     "framer-motion": "^11.11.9",
     "html2canvas": "^1.4.1",
     "install": "^0.13.0",

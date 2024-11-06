@@ -14,7 +14,6 @@
   width: 80%;
   height: 80%;
   background: #5CA1B7;
-  clip-path: polygon(0 0, 96% 0, 100% 10%, 100% 100%, 4% 100%, 0% 90%);
   border-radius: 2px;
   transition: all 0.3s ease-in-out;
   overflow-y: auto;

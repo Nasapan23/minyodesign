@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
+import FakeGlowMaterial from '@/utils/FakeGlowMaterial'
 
 export default function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
   const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-liftup.glb')
@@ -47,7 +48,16 @@ export default function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1],
         geometry={nodes.b5001.geometry}
         material={materials['Material.020']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+              <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -75,14 +85,24 @@ export default function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1],
         geometry={nodes.grafic.geometry}
         material={materials['Material.021']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+       <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.panou_logo.geometry}
         material={materials['Material.002']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+      </mesh>
       <mesh
         castShadow
         receiveShadow
@@ -110,63 +130,143 @@ export default function DisketaLiftUp({ position = [0, 0, 0], scale = [1, 1, 1],
         geometry={nodes.rama_baterie.geometry}
         material={materials['Material.022']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+      <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_dintre.geometry}
         material={materials['Material.017']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+     >
+        <FakeGlowMaterial
+          glowColor="#fffff" // Blue color
+          glowInternalRadius={0.5}
+          glowSharpness={1}
+          falloff={0.2}
+          opacity={1.0}
+          depthTest={true}
+        />
+     </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_exterioara.geometry}
-        material={materials['Material.014']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+        <FakeGlowMaterial
+          glowColor="#53A0C5" // Blue color
+          glowInternalRadius={0.5}
+          glowSharpness={1}
+          falloff={0.2}
+          opacity={1.0}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_interior.geometry}
         material={materials['Material.016']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+        <FakeGlowMaterial
+          glowColor="#2F6B91" // Blue color
+          glowInternalRadius={0.5}
+          glowSharpness={0.4}
+          falloff={0.2}
+          opacity={1.0}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_logo.geometry}
         material={materials['Material.018']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+              <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_titlu.geometry}
         material={materials['Material.023']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+              <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.stanga_spatiugolbaterie.geometry}
         material={materials['Material.003']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+              <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+        </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.tema_chenar.geometry}
         material={materials['Material.019']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+              <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.textdreapta.geometry}
         material={materials['Material.001']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      >
+              <FakeGlowMaterial
+          glowColor="#fffff"
+          glowInternalRadius={0.5}
+          glowSharpness={0.5}
+          falloff={0.2}
+          opacity={0.6}
+          depthTest={true}
+        />
+      </mesh>
     </group>
   )
 }

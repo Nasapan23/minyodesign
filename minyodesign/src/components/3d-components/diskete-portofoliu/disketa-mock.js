@@ -30,13 +30,13 @@ const { nodes, materials } = useGLTF('/3DObjects/Disketa-meniu.glb')
         material={materials['Material.013']}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      <mesh
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_exterior.geometry}
         material={materials['Material.012']}
         rotation={[Math.PI / 2, 0, 0]}
-      />
+      /> */}
       <mesh
         castShadow
         receiveShadow
