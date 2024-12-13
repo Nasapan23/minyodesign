@@ -2,6 +2,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import useIsMobile from '@/hooks/UseIsMobile';
 import LoadingScreen from '@/components/loadingScreen';
+import CloudyOverlay from '../cloudOverlay/cloudOverlay';
 
 // Lazy load components
 const LogoPart = lazy(() => import('@/components/logo-part'));
@@ -10,16 +11,15 @@ const Prezentare = lazy(() => import('@/components/presentation'));
 const GraphicDesignCarousel = lazy(() => import('@/components/portofolio/graphicDesign'));
 
 const Home = () => {
-  const isMobile = useIsMobile(); // Detect mobile view
-  const [isLoading, setIsLoading] = useState(true); // Track loading state
+  const isMobile = useIsMobile();
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate a fixed 3-second loading delay
   useEffect(() => {
     const renderTimeout = setTimeout(() => {
-      setIsLoading(false); // Hide the loading screen after 3 seconds
-    }, 3000); // 3000 ms = 3 seconds
+      setIsLoading(false);
+    }, 3000);
 
-    return () => clearTimeout(renderTimeout); // Clean up timeout
+    return () => clearTimeout(renderTimeout);
   }, []);
 
   return (
@@ -28,9 +28,10 @@ const Home = () => {
         <LoadingScreen />
       ) : (
         <Suspense fallback={<LoadingScreen />}>
-          {isMobile && <Navigation />}
+          <CloudyOverlay mode='double'>
+          <Navigation />
           <LogoPart />
-          {!isMobile && <Navigation />}
+          </CloudyOverlay>
           <Prezentare />
           <GraphicDesignCarousel />
         </Suspense>

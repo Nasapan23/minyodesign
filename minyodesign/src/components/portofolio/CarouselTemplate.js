@@ -99,12 +99,7 @@ export default function Carousel({ models, mapping, titleComponent: TitleCompone
   }, [activeIndex, isMobile, models.length]);
 
   return (
-    <div {...handlers} className={`relative flex justify-center items-center ${isMobile ? 'h-[50vh]' : 'h-screen'} w-full`}>
-      {/* Background elements */}
-      <div className="stars"></div>
-      <div className="twinkling"></div>
-      <div className="clouds hidden md:block"></div>
-      {/* Canvas container with transparent background */}
+    <div {...handlers} className={`relative flex justify-center items-center ${isMobile ? 'h-[50vh]' : 'h-screen'} w-full bg-blue-50`}>
       <div className="relative z-10 w-full h-full">
         <Canvas
           camera={{ position: [0, 0, 10], fov: isMobile ? 45 : 45 }}

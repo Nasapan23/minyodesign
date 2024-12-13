@@ -83,11 +83,7 @@ const Prezentare = () => {
   const disketaMareScale = isMobile ? [0.7, 0.7, 0.7] : [1.5, 1.5, 1.5];
 
   return (
-    <div style={{ height: '100vh', width: '100vw', position: 'relative' }}>
-    {/* Add background elements */}
-      <div className="stars"></div>
-      <div className="twinkling"></div>
-      <div className="clouds hidden md:block"></div>
+    <div style={{ height: '100vh', width: '100vw', position: 'relative', }} className='bg-gradient-to-b from-white to-blue-50'>
       <Canvas
         shadows
         gl={{ alpha: true }} // Disable transparency to force background color
