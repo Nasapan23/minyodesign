@@ -1,68 +1,93 @@
-import React from 'react';
-import ButtonXSVG from '@/utils/svgs';
-import '@/styles/modal.css';
+import React, { useState } from 'react';
+import Gallery from 'react-photo-gallery';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
-const Modal = ({ id, name, logo, description, images, onClose }) => {
+const PortfolioGallery = ({ logo, title, images, onClose }) => {
+  const defaultTitle = title || "Project Showcase";
+  const defaultLogo = logo || "https://via.placeholder.com/200";
+  const defaultImages = images && images.length > 0
+    ? images.map((src) => ({ src, width: 3, height: 2 }))
+    : [
+        { src: "https://via.placeholder.com/600x400", width: 3, height: 2 },
+        { src: "https://via.placeholder.com/600x400", width: 3, height: 2 },
+        { src: "https://via.placeholder.com/600x400", width: 3, height: 2 },
+      ];
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (event, { index }) => {
+    setCurrentImageIndex(index);
+    setIsLightboxOpen(true);
+  };
+
+  const moveNext = () => {
+    setCurrentImageIndex((currentImageIndex + 1) % defaultImages.length);
+  };
+
+  const movePrev = () => {
+    setCurrentImageIndex(
+      (currentImageIndex + defaultImages.length - 1) % defaultImages.length
+    );
+  };
+
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
-      <div className="modal-wrapper">
-        {/* Back Layer */}
-        <div className="back-layer"></div>
+    <div className="fixed inset-0 bg-blue-50 z-50 flex flex-col">
+      {/* Close Modal Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white text-2xl w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-gray-700"
+        aria-label="Close Modal"
+      >
+        ×
+      </button>
 
-        {/* Modal Content */}
-        <div className="modal-container p-2 overflow-y-auto">
-          {/* Close Button */}
-          <div className=" ">
-          <button
-            onClick={onClose}
-            className="absolute top-6 right-12 text-black text-xl w-12 h-12 flex items-center justify-center bg-transparent z-10 close-button"
-          >
-            <ButtonXSVG />
-          </button>
-          </div>
+      {/* Header Section */}
+      <div className="flex items-start px-6 py-4">
+        {/* Logo */}
+        <div className="w-48 h-48 flex-shrink-0 aspect-square overflow-hidden bg-white rounded-lg">
+          <img
+            src={defaultLogo}
+            alt="Logo"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          <div className="w-full h-full p-6 bg-[#5CA1B7] rounded-lg inner-content overflow-y-auto">
-            {/* Header Section (Logo + Text) */}
-            <div className="flex mb-6 header-container">
-              {/* Logo Section */}
-              <div className="w-1/3 mr-6 p-4 logo-container">
-                <img
-                  src={logo}
-                  alt="Logo"
-                  className="w-full h-auto object-contain logo-img"
-                />
-              </div>
-
-              {/* Text Section */}
-              <div className="w-2/3 bg-[#2F6B91] p-4 text-container">
-                <h2 className="text-3xl font-bold text-white mb-2">
-                  Card ID: {id}
-                </h2>
-                <h3 className="text-xl text-white mb-4">Card Name: {name}</h3>
-                <p
-                  className="text-white leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: description }}
-                />
-              </div>
-            </div>
-
-            {/* Images Section */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#2F6B91] p-4 images-container">
-              {images && images.map((imgSrc, index) => (
-                <div key={index} className="bg-white p-2 image-box">
-                  <img
-                    src={imgSrc}
-                    alt={`Image ${index + 1}`}
-                    className="w-full h-auto object-cover image-content rounded-md"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Title & Description */}
+        <div className="ml-6 flex flex-col justify-start">
+          <h1 className="text-3xl font-bold text-black">{defaultTitle}</h1>
+          <p className="text-gray-600 mt-2">
+            This is a brief description of the project. It can include details 
+            like purpose, features, and the tech stack used. Replace this text 
+            as needed to describe your project.
+          </p>
         </div>
       </div>
+
+      {/* Gallery Section */}
+      <div className="flex-grow px-6 py-4 overflow-y-auto">
+        <Gallery photos={defaultImages} onClick={openLightbox} />
+      </div>
+
+      {/* Lightbox for Slideshow */}
+      {isLightboxOpen && (
+        <Lightbox
+          mainSrc={defaultImages[currentImageIndex].src}
+          nextSrc={defaultImages[(currentImageIndex + 1) % defaultImages.length].src}
+          prevSrc={
+            defaultImages[
+              (currentImageIndex + defaultImages.length - 1) % defaultImages.length
+            ].src
+          }
+          onCloseRequest={() => setIsLightboxOpen(false)}
+          onMoveNextRequest={moveNext}
+          onMovePrevRequest={movePrev}
+          reactModalStyle={{ overlay: { zIndex: 9999 } }}
+        />
+      )}
     </div>
   );
 };
 
-export default Modal;
+export default PortfolioGallery;

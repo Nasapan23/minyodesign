@@ -1,122 +1,142 @@
 'use client';
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { DropdownArrowSVG } from '@/utils/svgs';
 
-const Navigation = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    // Function to toggle the menu
-    const toggleMenu = () => {
-        setIsMenuOpen((prev) => !prev);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.width = '100%';
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
     };
+  }, [isMenuOpen]);
 
-    // Framer Motion variants for advanced animation
-    const menuVariants = {
-        hidden: {
-            opacity: 0,
-            scale: 0.9,
-            y: -50,
-        },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1], // Smooth easing curve
-            },
-        },
-        exit: {
-            opacity: 0,
-            scale: 0.9,
-            y: -50,
-            transition: {
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1],
-            },
-        },
-    };
-
-    return (
-        <>
-            {/* Floating Circle Button */}
-            <button
-                onClick={toggleMenu}
-                className="outline-none fixed top-5 right-5 z-50"
+  return (
+    <>
+      <button
+        onClick={toggleMenu}
+        className="fixed top-5 right-5 z-[9999] outline-none"
+      >
+        {isMenuOpen ? (
+          <Image
+            src="/buton-meniu-x.svg"
+            alt="Close Menu"
+            width={80}
+            height={80}
+            className="w-16 h-16"
+          />
+        ) : (
+          <Image
+            src="/buton-meniu.svg"
+            alt="Open Menu"
+            width={80}
+            height={80}
+            className="w-16 h-16"
+          />
+        )}
+      </button>
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="fixed inset-0 bg-blue-100 z-[9998] flex items-center justify-center"
+        >
+          <nav className="space-y-4">
+            <motion.a
+              href="#"
+              className="block text-2xl font-medium text-black"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
-                <Image
-                    src="/buton-meniu.svg"
-                    alt="Menu Button"
-                    width={80}
-                    height={80}
-                    className="w-16 h-16" // Larger SVG icon
-                />
-            </button>
-
-            {/* Animated Menu */}
-            <AnimatePresence>
-                {isMenuOpen && (
-                    <motion.div
-                        variants={menuVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="fixed top-0 left-0 w-full h-full bg-blue-100 z-40 flex flex-col items-center justify-center"
-                    >
-                        {/* Close Button */}
-                        <button
-                            onClick={toggleMenu}
-                            className="absolute top-5 right-5"
-                        >
-                            <Image
-                                src="/buton-meniu.svg"
-                                alt="Close Menu"
-                                width={80}
-                                height={80}
-                                className="rotate-180 w-16 h-16"
-                            />
-                        </button>
-
-                        {/* Menu Content */}
-                        <nav className="flex flex-col items-center space-y-8">
-                            <motion.a
-                                href="#"
-                                className="text-3xl text-[#046494] font-bold"
-                                style={{ color: '#046494' }} // Inline style fallback
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                            >
-                                Portfolio
-                            </motion.a>
-                            <motion.a
-                                href="#"
-                                className="text-3xl text-[#046494] font-bold"
-                                style={{ color: '#046494' }} // Inline style fallback
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.4 }}
-                            >
-                                Partners
-                            </motion.a>
-                            <motion.a
-                                href="#"
-                                className="text-3xl text-[#046494] font-bold"
-                                style={{ color: '#046494' }} // Inline style fallback
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.6 }}
-                            >
-                                Contact
-                            </motion.a>
-                        </nav>
-                    </motion.div>
+              Acasa
+            </motion.a>
+            <motion.a
+              href="#"
+              className="block text-2xl font-medium text-black"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+            >
+              Despre Noi
+            </motion.a>
+            <motion.a
+              href="#"
+              className="block text-2xl font-medium text-black"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+            >
+              Portofoliu
+            </motion.a>
+            <div>
+              <motion.button
+                onClick={toggleDropdown}
+                className="block text-2xl font-medium text-black flex items-center justify-between w-full"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+              >
+                <span>Parteneri</span>
+                <motion.span
+                  animate={{ rotate: isDropdownOpen ? -90 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {'>'}
+                </motion.span>
+              </motion.button>
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.ul
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-2 space-y-2"
+                  >
+                    <li>
+                      <a
+                        href="https://nisipeanutech.ro"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-lg text-black"
+                      >
+                        nisipeanutech.ro
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" className="block text-lg text-black">
+                        Value2
+                      </a>
+                    </li>
+                  </motion.ul>
                 )}
-            </AnimatePresence>
-        </>
-    );
-};
-
-export default Navigation;
+              </AnimatePresence>
+            </div>
+          </nav>
+        </motion.div>
+      )}
+    </>
+  );
+}

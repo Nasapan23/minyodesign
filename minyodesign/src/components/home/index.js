@@ -1,4 +1,5 @@
-"use client";
+// pages/index.js or wherever your "Home" component resides
+'use client';
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import useIsMobile from '@/hooks/UseIsMobile';
 import LoadingScreen from '@/components/loadingScreen';
@@ -18,7 +19,6 @@ const Home = () => {
     const renderTimeout = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
-
     return () => clearTimeout(renderTimeout);
   }, []);
 
@@ -28,9 +28,9 @@ const Home = () => {
         <LoadingScreen />
       ) : (
         <Suspense fallback={<LoadingScreen />}>
-          <CloudyOverlay mode='double'>
           <Navigation />
-          <LogoPart />
+          <CloudyOverlay mode="double">
+            <LogoPart />
           </CloudyOverlay>
           <Prezentare />
           <GraphicDesignCarousel />
