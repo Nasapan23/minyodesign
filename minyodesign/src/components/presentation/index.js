@@ -1,11 +1,12 @@
-'use client';  // Mark the component as client-side
+'use client';
 
 import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber'; // Ensure useFrame is imported here
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { DisketaMica } from '@/components/3d-components/disketa-mica/';
+import { DisketaMica1 } from '@/components/3d-components/disketa-mica-1';
+import { DisketaMica2 } from '@/components/3d-components/disketa-mica-2';
 import DisketaMare from '../3d-components/disketa-mare';
-import useIsMobile from '@/hooks/UseIsMobile'; // Import the custom hook
+import useIsMobile from '@/hooks/UseIsMobile';
 import * as THREE from 'three';
 
 const raycaster = new THREE.Raycaster();
@@ -15,54 +16,44 @@ const mouseVector = new THREE.Vector2();
 const InteractiveDisketa = ({ children, initialPosition, floatSpeed = 0.5, amplitude = 0.2, phaseOffset = 0 }) => {
   const ref = useRef();
   const [hovered, setHovered] = useState(false);
-  const [rotation, setRotation] = useState([0, 0, 0]);
 
-  const isMobile = useIsMobile(); // Detect mobile to disable hover effect on mobile
+  const isMobile = useIsMobile();
 
-  // The initial rotation (zero) to which the disk will return
   const originalRotation = new THREE.Vector3(0, 0, 0);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     const { mouse, viewport } = state;
-  
-    // Normalized mouse coordinates between -1 and 1 (left to right, top to bottom)
-    const mouseX = (mouse.x * viewport.width) / 2; // X-axis, viewport dependent
-    const mouseY = (mouse.y * viewport.height) / 2; // Y-axis, viewport dependent
-  
-    // Define the rotation scale based on how much rotation you want (adjust these numbers as needed)
-    const rotationScaleX = 0.02; // Adjust this value for X rotation sensitivity
-    const rotationScaleY = 0.02; // Adjust this value for Y rotation sensitivity
-  
-    // Only apply rotation if the object is hovered over
+
+    const mouseX = (mouse.x * viewport.width) / 2;
+    const mouseY = (mouse.y * viewport.height) / 2;
+
+    const rotationScaleX = 0.02;
+    const rotationScaleY = 0.02;
+
     if (hovered && !isMobile) {
       ref.current.rotation.x = THREE.MathUtils.lerp(
         ref.current.rotation.x,
-        mouseY * rotationScaleX,  // Rotate around X based on mouse Y
+        mouseY * rotationScaleX,
         0.1
       );
       ref.current.rotation.y = THREE.MathUtils.lerp(
         ref.current.rotation.y,
-        mouseX * rotationScaleY,  // Rotate around Y based on mouse X
+        mouseX * rotationScaleY,
         0.1
       );
     } else {
-      // Smoothly return to original rotation if not hovered
       ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, originalRotation.x, 0.1);
       ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, originalRotation.y, 0.1);
     }
-  
-    // Floating effect
+
     ref.current.position.y = initialPosition[1] + Math.sin(time * floatSpeed + phaseOffset) * amplitude;
   });
-  
-  
 
   return (
     <group
       ref={ref}
       position={initialPosition}
-      rotation={rotation}
       onPointerOver={() => !isMobile && setHovered(true)}
       onPointerOut={() => setHovered(false)}
     >
@@ -71,77 +62,71 @@ const InteractiveDisketa = ({ children, initialPosition, floatSpeed = 0.5, ampli
   );
 };
 
+const MovingDirectionalLight = ({ speed = 1 }) => {
+  const lightRef = useRef();
+
+  useFrame(({ clock }) => {
+    const time = clock.getElapsedTime() * speed; // Multiply elapsed time by speed
+    const range = 5; // Range of movement
+    lightRef.current.position.x = Math.sin(time) * range;
+  });
+
+  return (
+    <directionalLight
+      ref={lightRef}
+      position={[5, 0, 5]}
+      intensity={2}
+      color={"#ffffff"}
+      castShadow
+      shadow-mapSize-width={2048}
+      shadow-mapSize-height={2048}
+      shadow-bias={-0.002}
+    />
+  );
+};
+
+
 const Prezentare = () => {
-  const isMobile = useIsMobile(); // Use the hook to detect if it's mobile
+  const isMobile = useIsMobile();
 
-  // Define different positions and scales for mobile and desktop
-  const disketaMicaPosition1 = isMobile ? [0, -1.5, 0] : [4, 0, 0];
+  const disketaMicaPosition1 = isMobile ? [0, -1.8, 0] : [4, 0, 0];
   const disketaMicaPosition2 = isMobile ? [0, -4, 0] : [4, -4, 0];
-  const disketaMarePosition = isMobile ? [3.3, 0, 0] : [3, -5.5, 0];
+  const disketaMarePosition = isMobile ? [-0.15, 2.5, 0] : [-5, 0, 0];
 
-  const disketaMicaScale = isMobile ? [0.7, 0.7, 0.7] : [1.3, 1.3, 1.3];
+  const disketaMicaScale = isMobile ? [0.7, 0.7, 0.7] : [2, 1.3, 1.3];
   const disketaMareScale = isMobile ? [0.7, 0.7, 0.7] : [1.5, 1.5, 1.5];
 
   return (
-    <div style={{ height: '100vh', width: '100vw', position: 'relative', }} className='bg-gradient-to-b from-white to-blue-50'>
+    <div style={{ height: '100vh', width: '100vw', position: 'relative' }} className="bg-gradient-to-b from-white to-blue-50">
       <Canvas
         shadows
-        gl={{ alpha: true }} // Disable transparency to force background color
-        camera={{ position: [0, 0, 10], fov: 50 }} // Camera settings
+        gl={{ alpha: true }}
+        camera={{ position: [0, 0, 10], fov: 50 }}
       >
-        {/* Ambient light to softly illuminate the entire scene */}
-        <ambientLight intensity={0.6} />
+        <ambientLight intensity={1.2} color={"#fffef0"}/>
 
-        {/* Directional light to cast soft shadows */}
+        {/* Moving directional light */}
+        <MovingDirectionalLight />
+
+        {/* Static secondary directional light */}
         <directionalLight
-          position={[5, 5, 5]}
-          intensity={1.2}
-          castShadow
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
-          shadow-bias={-0.001}  // Helps with shadow artifacts
+          position={[-7, 10, 30]}
+          intensity={1}
+          color={"#40c9ff"}
         />
 
-        {/* Secondary directional light for additional lighting */}
-        <directionalLight
-          position={[-5, 5, 5]}
-          intensity={0.8}
-        />
-
-        {/* A point light behind the object for subtle backlighting */}
-        <pointLight
-          position={[0, 0, -10]}
-          intensity={0.6}
-          distance={15} // Spread the light evenly
-        />
-
-        {/* Each disketa is wrapped with InteractiveDisketa to apply floating and interaction behavior */}
-        
-        {/* First DisketaMica with hover interaction */}
         <InteractiveDisketa initialPosition={disketaMicaPosition1} floatSpeed={0.5} amplitude={0.2} phaseOffset={0}>
-          <DisketaMica
-            rotation={[0, -Math.PI / 2, 0]}
-            scale={disketaMicaScale}
-          />
+          <DisketaMica1 rotation={[0, -Math.PI / 2, 0]} scale={disketaMicaScale} />
         </InteractiveDisketa>
 
-        {/* Second DisketaMica with hover interaction */}
         <InteractiveDisketa initialPosition={disketaMicaPosition2} floatSpeed={0.6} amplitude={0.25} phaseOffset={1}>
-          <DisketaMica
-            rotation={[0, -Math.PI / 2, 0]}
-            scale={disketaMicaScale}
-          />
+          <DisketaMica2 rotation={[0, -Math.PI / 2, 0]} scale={disketaMicaScale} />
         </InteractiveDisketa>
 
-        {/* DisketaMare with hover interaction */}
         <InteractiveDisketa initialPosition={disketaMarePosition} floatSpeed={0.4} amplitude={0.3} phaseOffset={2}>
-          <DisketaMare
-            rotation={[0, -Math.PI / 2, 0]}
-            scale={disketaMareScale}
-          />
+          <DisketaMare rotation={[0, -Math.PI / 2, 0]} scale={disketaMareScale} />
         </InteractiveDisketa>
 
-        {/* Optional OrbitControls for interactivity */}
         {/* <OrbitControls /> */}
       </Canvas>
     </div>

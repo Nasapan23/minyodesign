@@ -6,6 +6,7 @@ import { useSwipeable } from 'react-swipeable';
 import { useRouter } from 'next/navigation';
 import useIsMobile from '@/hooks/UseIsMobile';
 import * as THREE from 'three';
+import { OrbitControls } from '@react-three/drei';
 
 const InteractiveDisketa = React.memo(function InteractiveDisketa({
   children,
@@ -19,6 +20,29 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
   const [hovered, setHovered] = useState(false);
   const isMobile = useIsMobile();
   const originalRotation = new THREE.Vector3(0, 0, 0);
+
+  const pointerStart = useRef({ x: 0, y: 0 });
+  const pointerMoved = useRef(false);
+
+  const handlePointerDown = (event) => {
+    pointerStart.current = { x: event.clientX, y: event.clientY };
+    pointerMoved.current = false;
+  };
+
+  const handlePointerMove = (event) => {
+    const dx = event.clientX - pointerStart.current.x;
+    const dy = event.clientY - pointerStart.current.y;
+    if (Math.sqrt(dx * dx + dy * dy) > 5) {
+      // If the pointer moved more than 5px, consider it a drag
+      pointerMoved.current = true;
+    }
+  };
+
+  const handlePointerUp = () => {
+    if (!pointerMoved.current) {
+      onClick?.();
+    }
+  };
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
@@ -43,12 +67,15 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
       position={initialPosition}
       onPointerOver={() => !isMobile && setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      onClick={onClick}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
     >
       {children}
     </group>
   );
 });
+
 
 export default function Carousel({ models, titleComponent: TitleComponent }) {
   const [activeIndex, setActiveIndex] = useState(Math.floor(models.length / 2));
@@ -103,9 +130,14 @@ export default function Carousel({ models, titleComponent: TitleComponent }) {
           gl={{ alpha: true, antialias: true }}
           style={{ background: 'transparent' }}
         >
-          <ambientLight intensity={0.5} />
-          <pointLight ref={pointLightRef} position={[5, -10, 10]} intensity={100} color="#ff758f" />
-          <directionalLight ref={directionalLightRef} position={[5, -10, 13]} intensity={1} />
+          <ambientLight intensity={1} />
+          <pointLight ref={pointLightRef} position={[5, 5, 10]} intensity={1} color="#40c9ff" />
+          <directionalLight ref={directionalLightRef} position={[5, 10, 13]} intensity={1} />
+          <directionalLight
+          position={[0, 0, 1]}
+          intensity={0.3}
+          color={"#40c9ff"}
+        />
           {models.map((model, index) => {
             const { position, scale } = positions[index];
             const { component: ModelComponent, name } = model;
@@ -139,8 +171,9 @@ export default function Carousel({ models, titleComponent: TitleComponent }) {
             amplitude={0.2}
             phaseOffset={0}
           >
-            <TitleComponent rotation={[-0.2, -Math.PI / 2, 0]} scale={[isMobile ? 1 : 1.5, 0.8, 0.8]} />
+            <TitleComponent rotation={[-0.15, -Math.PI / 2, 0]} scale={[isMobile ? 1 : 1.5, 0.8, 0.8]} />
           </InteractiveDisketa>
+          {/* <OrbitControls/> */}
         </Canvas>
       </div>
     </div>

@@ -1,9 +1,17 @@
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
-import FakeGlowMaterial from '@/utils/FakeGlowMaterial'
+import React from 'react';
+import { useGLTF } from '@react-three/drei';
 
 export default function TitluGD({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
-  const { nodes, materials } = useGLTF('/3DObjects/titlu/titlu-gd.glb')
+  const { nodes, materials } = useGLTF('/3DObjects/titlu/titlu-gd.glb');
+
+  // Increase reflectiveness for all relevant materials
+  const reflectiveMaterials = ['Material.006', 'Material.005', 'Material.007', 'Material.004'];
+  reflectiveMaterials.forEach((matName) => {
+    if (materials[matName]) {
+      materials[matName].metalness = 1; // Increase reflectiveness (close to metallic)
+      materials[matName].roughness = 0.5; // Reduce roughness for a shinier surface
+    }
+  });
 
   return (
     <group position={position} scale={scale} rotation={rotation} {...props} dispose={null}>
@@ -13,16 +21,7 @@ export default function TitluGD({ position = [0, 0, 0], scale = [1, 1, 1], rotat
         geometry={nodes.holograma.geometry}
         material={materials['Material.006']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-      <FakeGlowMaterial
-          glowColor="#53A0C5" // Blue color
-          glowInternalRadius={0.5}
-          glowSharpness={0.8}
-          falloff={0.2}
-          opacity={1.0}
-          depthTest={true}
-        />
-      </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
@@ -45,7 +44,7 @@ export default function TitluGD({ position = [0, 0, 0], scale = [1, 1, 1], rotat
         rotation={[Math.PI / 2, 0, 0]}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/3DObjects/titlu/titlu-gd.glb')
+useGLTF.preload('/3DObjects/titlu/titlu-gd.glb');

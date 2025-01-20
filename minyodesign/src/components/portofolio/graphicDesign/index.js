@@ -3,8 +3,6 @@
 import React, { Suspense, useMemo } from 'react';
 import Carousel from '@/components/portofolio/CarouselTemplate';  // Import the Carousel component
 import TitluGD from '@/components/3d-components/proiecte/titlu/titlu-gd';  // The title component
-import GraphicDesignMapping from './contentMapping';  // Import the content mapping
-import LoadingScreen from '@/components/loadingScreen';
 
 // Lazy loading 3D models
 const DisketaAtelier = React.lazy(() => import('@/components/3d-components/proiecte/gd/disketa-atelier.js'));
@@ -39,7 +37,6 @@ export default function GraphicDesignCarousel() {
   return (
       <Carousel
         models={graphicDesignModels}  // Pass the models for graphic design
-        mapping={GraphicDesignMapping}  // Pass the content mapping
         titleComponent={TitluGD}  // Pass the title component
       />
   );
