@@ -1,12 +1,18 @@
 'use client';
-import React, { useState, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useMemo, useRef, useCallback, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useSpring, animated } from '@react-spring/three';
 import { useSwipeable } from 'react-swipeable';
 import { useRouter } from 'next/navigation';
 import useIsMobile from '@/hooks/UseIsMobile';
 import * as THREE from 'three';
-import { OrbitControls } from '@react-three/drei';
+
+// Lazy-load model components safely
+const LazyModel = React.memo(({ Component }) => (
+  <Suspense fallback={null}>
+    <Component />
+  </Suspense>
+));
 
 const InteractiveDisketa = React.memo(function InteractiveDisketa({
   children,
@@ -14,7 +20,7 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
   floatSpeed = 0.5,
   amplitude = 0.2,
   phaseOffset = 0,
-  onClick
+  onClick,
 }) {
   const ref = useRef();
   const [hovered, setHovered] = useState(false);
@@ -33,7 +39,6 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
     const dx = event.clientX - pointerStart.current.x;
     const dy = event.clientY - pointerStart.current.y;
     if (Math.sqrt(dx * dx + dy * dy) > 5) {
-      // If the pointer moved more than 5px, consider it a drag
       pointerMoved.current = true;
     }
   };
@@ -76,12 +81,9 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
   );
 });
 
-
 export default function Carousel({ models, titleComponent: TitleComponent }) {
   const [activeIndex, setActiveIndex] = useState(Math.floor(models.length / 2));
   const isMobile = useIsMobile();
-  const pointLightRef = useRef();
-  const directionalLightRef = useRef();
   const router = useRouter();
 
   const handleNext = useCallback(() => {
@@ -100,7 +102,7 @@ export default function Carousel({ models, titleComponent: TitleComponent }) {
     onSwipedLeft: handleNext,
     onSwipedRight: handlePrev,
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true
+    trackMouse: true,
   });
 
   const positions = useMemo(() => {
@@ -130,50 +132,47 @@ export default function Carousel({ models, titleComponent: TitleComponent }) {
           gl={{ alpha: true, antialias: true }}
           style={{ background: 'transparent' }}
         >
-          <ambientLight intensity={1} />
-          <pointLight ref={pointLightRef} position={[5, 5, 10]} intensity={1} color="#40c9ff" />
-          <directionalLight ref={directionalLightRef} position={[5, 10, 13]} intensity={1} />
-          <directionalLight
-          position={[0, 0, 1]}
-          intensity={0.3}
-          color={"#40c9ff"}
-        />
-          {models.map((model, index) => {
-            const { position, scale } = positions[index];
-            const { component: ModelComponent, name } = model;
-            const { animatedPosition, animatedScale } = useSpring({
-              animatedPosition: position,
-              animatedScale: scale,
-              config: { tension: 200, friction: 30 }
-            });
-            return (
-              <InteractiveDisketa
-                key={index}
-                initialPosition={position}
-                floatSpeed={0.5}
-                amplitude={0.2}
-                phaseOffset={index}
-                onClick={() => handleNavigation(name)}
-              >
-                <animated.group
-                  position={animatedPosition.to((x, y, z) => [x, y, z])}
-                  rotation={[0, -Math.PI / 2, 0]}
-                  scale={animatedScale}
+          <Suspense fallback={null}>
+            <ambientLight intensity={1} />
+            <pointLight position={[5, 5, 10]} intensity={1} color="#40c9ff" />
+            <directionalLight position={[5, 10, 13]} intensity={1} />
+            <directionalLight position={[0, 0, 1]} intensity={0.3} color="#40c9ff" />
+            {models.map((model, index) => {
+              const { position, scale } = positions[index];
+              const { component: ModelComponent, name } = model;
+              const springProps = useSpring({
+                position,
+                scale,
+                config: { tension: 200, friction: 30 },
+              });
+              return (
+                <InteractiveDisketa
+                  key={index}
+                  initialPosition={position}
+                  floatSpeed={0.5}
+                  amplitude={0.2}
+                  phaseOffset={index}
+                  onClick={() => handleNavigation(name)}
                 >
-                  <ModelComponent />
-                </animated.group>
-              </InteractiveDisketa>
-            );
-          })}
-          <InteractiveDisketa
-            initialPosition={[-1, isMobile ? -0.2 : -1, 0]}
-            floatSpeed={0.5}
-            amplitude={0.2}
-            phaseOffset={0}
-          >
-            <TitleComponent rotation={[-0.15, -Math.PI / 2, 0]} scale={[isMobile ? 1 : 1.5, 0.8, 0.8]} />
-          </InteractiveDisketa>
-          {/* <OrbitControls/> */}
+                  <animated.group
+                    position={springProps.position.to((x, y, z) => [x, y, z])}
+                    rotation={[0, -Math.PI / 2, 0]}
+                    scale={springProps.scale}
+                  >
+                    <LazyModel Component={ModelComponent} />
+                  </animated.group>
+                </InteractiveDisketa>
+              );
+            })}
+            <InteractiveDisketa
+              initialPosition={[-1, isMobile ? -0.2 : -1, 0]}
+              floatSpeed={0.5}
+              amplitude={0.2}
+              phaseOffset={0}
+            >
+              <TitleComponent rotation={[-0.15, -Math.PI / 2, 0]} scale={[isMobile ? 1 : 1.5, 0.8, 0.8]} />
+            </InteractiveDisketa>
+          </Suspense>
         </Canvas>
       </div>
     </div>
