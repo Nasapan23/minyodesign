@@ -1,11 +1,16 @@
 'use client';
 
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
-import FakeGlowMaterial from '@/utils/FakeGlowMaterial'
+import React from 'react';
+import { useGLTF } from '@react-three/drei';
+import FakeGlowMaterial from '@/utils/FakeGlowMaterial';
 
-export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
-  const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-oala.glb')
+export default function Calle({
+  position = [0, 0, 0],
+  scale = [1, 1, 1],
+  rotation = [0, 0, 0],
+  ...props
+}) {
+  const { nodes = {}, materials = {} } = useGLTF('/3DObjects/m3d//calle.glb');
 
   return (
     <group position={position} scale={scale} rotation={rotation} {...props} dispose={null}>
@@ -50,16 +55,7 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         geometry={nodes.b5001.geometry}
         material={materials['Material.020']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-              <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
-          depthTest={true}
-        />
-      </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
@@ -88,12 +84,12 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         material={materials['Material.021']}
         rotation={[Math.PI / 2, 0, 0]}
       >
-       <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
+        <FakeGlowMaterial
+          glowColor="#ffebc0"
+          glowInternalRadius={0.7}
+          glowSharpness={0.8}
+          falloff={0.4}
+          opacity={0.8}
           depthTest={true}
         />
       </mesh>
@@ -103,8 +99,7 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         geometry={nodes.panou_logo.geometry}
         material={materials['Material.002']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-      </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
@@ -132,40 +127,32 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         geometry={nodes.rama_baterie.geometry}
         material={materials['Material.022']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-      <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
-          depthTest={true}
-        />
-      </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_dintre.geometry}
         material={materials['Material.017']}
         rotation={[Math.PI / 2, 0, 0]}
-     >
+      >
         <FakeGlowMaterial
-          glowColor="#fffff" // Blue color
+          glowColor="#a4c5e5"
           glowInternalRadius={0.5}
           glowSharpness={1}
           falloff={0.2}
           opacity={1.0}
           depthTest={true}
         />
-     </mesh>
+      </mesh>
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.rama_exterioara.geometry}
+        material={materials['Material.014']}
         rotation={[Math.PI / 2, 0, 0]}
       >
         <FakeGlowMaterial
-          glowColor="#53A0C5" // Blue color
+          glowColor="#53A0C5"
           glowInternalRadius={0.5}
           glowSharpness={1}
           falloff={0.2}
@@ -181,7 +168,7 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         rotation={[Math.PI / 2, 0, 0]}
       >
         <FakeGlowMaterial
-          glowColor="#2F6B91" // Blue color
+          glowColor="#2F6B91"
           glowInternalRadius={0.5}
           glowSharpness={0.4}
           falloff={0.2}
@@ -196,12 +183,12 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         material={materials['Material.018']}
         rotation={[Math.PI / 2, 0, 0]}
       >
-              <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
+        <FakeGlowMaterial
+          glowColor="#e6f9ff"
+          glowInternalRadius={0.6}
+          glowSharpness={0.6}
+          falloff={0.3}
+          opacity={0.7}
           depthTest={true}
         />
       </mesh>
@@ -211,66 +198,30 @@ export default function DisketaOala({ position = [0, 0, 0], scale = [1, 1, 1], r
         geometry={nodes.rama_titlu.geometry}
         material={materials['Material.023']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-              <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
-          depthTest={true}
-        />
-      </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.stanga_spatiugolbaterie.geometry}
         material={materials['Material.003']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-              <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
-          depthTest={true}
-        />
-        </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.tema_chenar.geometry}
         material={materials['Material.019']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-              <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
-          depthTest={true}
-        />
-      </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.textdreapta.geometry}
         material={materials['Material.001']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-              <FakeGlowMaterial
-          glowColor="#fffff"
-          glowInternalRadius={0.5}
-          glowSharpness={0.5}
-          falloff={0.2}
-          opacity={0.6}
-          depthTest={true}
-        />
-      </mesh>
+      />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/3DObjects/gd/disketa-oala.glb')
+useGLTF.preload('/3DObjects/m3d/calle.glb');

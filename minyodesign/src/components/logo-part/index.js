@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -12,7 +13,7 @@ const LogoPart = () => {
           gl={{ alpha: true }} // Disable transparency to force background color
           camera={{ position: [0, 0, 10], fov: 50 }} // Camera settings
           pointerEvents="none"
-          touchAction="none"
+          // touchaction="none"
         >
           {/* Ambient light to softly illuminate the entire scene */}
           <ambientLight intensity={0.6} />
