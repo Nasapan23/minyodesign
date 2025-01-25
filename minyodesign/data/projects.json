@@ -1,0 +1,28 @@
+[
+    {
+      "seoRoute": "Photomad",
+      "title": "Project One",
+      "description": "This is a detailed description for Project One. It showcases the best features of the project and highlights its achievements.",
+      "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+      "galleryImages": [
+        "https://placehold.co/500x500?text=Image+1",
+        "https://placehold.co/500x500?text=Image+2",
+        "https://placehold.co/500x500?text=Image+3",
+        "https://placehold.co/500x500?text=Image+4"
+      ]
+    },
+    {
+      "seoRoute": "project-two",
+      "title": "Project Two",
+      "description": "This is a detailed description for Project Two. It's designed to demonstrate the flexibility of this template.",
+      "logoImage": "https://placehold.co/500x500?text=Project+Two+Logo",
+      "galleryImages": [
+        "https://placehold.co/500x500?text=Image+1",
+        "https://placehold.co/500x500?text=Image+2",
+        "https://placehold.co/500x500?text=Image+3",
+        "https://placehold.co/500x500?text=Image+4",
+        "https://placehold.co/500x500?text=Image+5"
+      ]
+    }
+  ]
+  
