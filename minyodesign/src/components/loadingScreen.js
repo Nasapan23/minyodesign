@@ -7,7 +7,7 @@ const LoadingScreen = () => {
   return (
     <div className="loading-screen bg-blue-100">
       <div className="loader"></div>
-      <div className="loading-text">Loading experience</div>
+      <div className="loading-text">Loading Experience</div>
     </div>
   );
 };

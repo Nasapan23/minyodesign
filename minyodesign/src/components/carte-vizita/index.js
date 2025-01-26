@@ -52,8 +52,8 @@ const CarteDeVizitaPart = () => {
             position={[-5, -5, -5]}
             intensity={1}
             castShadow
-            shadow-mapSize-width={2048}
-            shadow-mapSize-height={2048}
+            shadow-mapSize-width={256}
+            shadow-mapSize-height={256}
             shadow-bias={-0.001}
           />
 

@@ -30,10 +30,12 @@
     "react-intersection-observer": "^9.13.1",
     "react-medium-image-zoom": "^5.2.13",
     "react-photo-gallery": "^8.0.0",
+    "react-photo-view": "^1.2.7",
     "react-swipeable": "^7.0.1",
     "react-three-fiber": "^6.0.13",
     "three": "^0.169.0",
-    "webgl-detect": "^0.0.1"
+    "webgl-detect": "^0.0.1",
+    "zoom": "^0.0.3"
   },
   "devDependencies": {
     "eslint": "^8",

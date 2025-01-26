@@ -78,8 +78,8 @@ const MovingDirectionalLight = ({ speed = 1 }) => {
       intensity={2}
       color={"#ffffff"}
       castShadow
-      shadow-mapSize-width={2048}
-      shadow-mapSize-height={2048}
+      shadow-mapSize-width={256}
+      shadow-mapSize-height={256}
       shadow-bias={-0.002}
     />
   );

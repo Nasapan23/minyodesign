@@ -1,28 +1,44 @@
 [
-    {
-      "seoRoute": "Photomad",
-      "title": "Project One",
-      "description": "This is a detailed description for Project One. It showcases the best features of the project and highlights its achievements.",
-      "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
-      "galleryImages": [
-        "https://placehold.co/500x500?text=Image+1",
-        "https://placehold.co/500x500?text=Image+2",
-        "https://placehold.co/500x500?text=Image+3",
-        "https://placehold.co/500x500?text=Image+4"
-      ]
-    },
-    {
-      "seoRoute": "project-two",
-      "title": "Project Two",
-      "description": "This is a detailed description for Project Two. It's designed to demonstrate the flexibility of this template.",
-      "logoImage": "https://placehold.co/500x500?text=Project+Two+Logo",
-      "galleryImages": [
-        "https://placehold.co/500x500?text=Image+1",
-        "https://placehold.co/500x500?text=Image+2",
-        "https://placehold.co/500x500?text=Image+3",
-        "https://placehold.co/500x500?text=Image+4",
-        "https://placehold.co/500x500?text=Image+5"
-      ]
-    }
-  ]
-  
+  {
+    "seoRoute": "Photomad",
+    "title": "Photomad",
+    "description": "PhotoMaD este o firmă de fotografie profesionistă specializată în capturarea momentelor de neuitat din evenimente importante. Cu o abordare artistică și un ochi atent pentru detalii, PhotoMaD transformă fiecare fotografie într-o poveste vie, surprinzând esența momentelor autentice și emoționale. Motto-ul lor, „O fotografie este acea parte dintr-o secundă care îți spune o poveste”, reflectă filozofia lor de a crea imagini care nu doar documentează, ci și evocă sentimente, amintiri și trăiri unice. Indiferent că este vorba despre nunți, evenimente corporative sau petreceri private, PhotoMaD îți oferă mai mult decât simple fotografii – îți oferă povești vizuale care rămân vii în timp.",
+    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "galleryImages": [
+      "https://placehold.co/500x500?text=Image+1",
+      "https://placehold.co/500x500?text=Image+2",
+      "https://placehold.co/500x500?text=Image+3",
+      "https://placehold.co/500x500?text=Image+4"
+    ]
+  },
+  {
+    "seoRoute": "Piggy",
+    "title": "Piggy Boutique",
+    "description": "Pyggy's Boutique este un brand de haine unicat care prinde viață prin mascotă sa animată, Piggy. Ilustrațiile captivante îl prezintă pe Piggy în diverse ipostaze creative și pline de culoare, explorând activități cotidiene și momente inspiraționale. Fiecare design este menit să aducă un strop de bucurie și să încurajeze oamenii să își urmeze visele. La Pyggy's Boutique, moda întâlnește imaginația, iar fiecare colecție spune o poveste, transmițând un mesaj de optimism și libertate.",
+    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "galleryImages": [
+      "/images/projects/piggy/1.webp",
+      "/images/projects/piggy/2.webp",
+      "/images/projects/piggy/3.webp",
+      "/images/projects/piggy/4.webp",
+      "/images/projects/piggy/5.webp",
+      "/images/projects/piggy/6.webp"
+    ]
+  },
+  {
+    "seoRoute": "Unarte",
+    "title": "UNARTE",
+"description": "Este important de menționat că acest proiect se bazează pe o identitate vizuală deja existentă. Sistemul de orientare pornește de la conceptul unei buline, în care un text decupat în negativ simbolizează dezvoltarea personală a studenților, așa cum este oferită de Facultatea de Arte din București. Decupajul reflectă perioada în care tinerii artiști își perfecționează abilitățile sub îndrumarea unui cadru didactic pregătit. Sistemul de orientare evidențiază zona Atelierelor, unde facultatea desfășoară cursurile practice, folosind simboluri minimaliste ce reprezintă spațiile fiecărui atelier aparținând diferitelor secții. Paleta de culori a fost aleasă pe baza unui studiu al materialelor utilizate de fiecare secție și al simbolisticii culorilor reprezentative. De asemenea, s-au creat panouri de orientare poziționate la intrările spațiilor și clădirilor principale, pentru a facilita ghidarea vizitatorilor și studenților către destinațiile dorite.",    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "galleryImages": [
+      "/images/projects/unarte/1.webp",
+      "/images/projects/unarte/2.webp",
+      "/images/projects/unarte/3.webp",
+      "/images/projects/unarte/4.webp",
+      "/images/projects/unarte/5.webp",
+      "/images/projects/unarte/6.webp",
+      "/images/projects/unarte/7.webp",
+      "/images/projects/unarte/8.webp",
+      "/images/projects/unarte/9.webp"
+    ]
+  }
+]

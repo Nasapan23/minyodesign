@@ -6,6 +6,7 @@ import FakeGlowMaterial from '@/utils/FakeGlowMaterial'
 export default function DisketaPhotomad({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0], ...props }) {
   const { nodes, materials } = useGLTF('/3DObjects/gd/disketa-photomad.glb')
 
+
   return (
     <group position={position} scale={scale} rotation={rotation} {...props} dispose={null}>
       <mesh
@@ -164,7 +165,7 @@ export default function DisketaPhotomad({ position = [0, 0, 0], scale = [1, 1, 1
         rotation={[Math.PI / 2, 0, 0]}
       >
         <FakeGlowMaterial
-          glowColor="#53A0C5"
+          glowColor="#53A0C5" // Blue color
           glowInternalRadius={0.5}
           glowSharpness={1}
           falloff={0.2}

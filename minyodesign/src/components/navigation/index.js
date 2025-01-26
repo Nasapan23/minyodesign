@@ -34,7 +34,7 @@ export default function Navigation() {
     <>
       <button
         onClick={toggleMenu}
-        className="fixed top-5 right-5 z-[9999] outline-none"
+        className="fixed top-5 right-5 z-[100] outline-none"
       >
         {isMenuOpen ? (
           <Image
@@ -60,7 +60,7 @@ export default function Navigation() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 bg-blue-100 z-[9998] flex items-center justify-center"
+          className="fixed inset-0 bg-blue-100 z-[99] flex items-center justify-center"
         >
           <nav className="space-y-4">
             <motion.a

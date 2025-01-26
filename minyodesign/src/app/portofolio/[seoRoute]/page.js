@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
-import ProjectClientComponent from './projectClientController';
+import ProjectClientComponent from './ProjectClientController';
 
 async function getProjectData(seoRoute) {
   const filePath = path.join(process.cwd(), 'data', 'projects.json');
