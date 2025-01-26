@@ -1,18 +1,12 @@
 'use client';
-import React, { useState, useMemo, useRef, useCallback, Suspense } from 'react';
+
+import React, { useState, useMemo, useRef, useCallback } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useSpring, animated } from '@react-spring/three';
 import { useSwipeable } from 'react-swipeable';
 import { useRouter } from 'next/navigation';
 import useIsMobile from '@/hooks/UseIsMobile';
 import * as THREE from 'three';
-
-// Lazy-load model components safely
-const LazyModel = React.memo(({ Component }) => (
-  <Suspense fallback={null}>
-    <Component />
-  </Suspense>
-));
 
 const InteractiveDisketa = React.memo(function InteractiveDisketa({
   children,
@@ -132,47 +126,45 @@ export default function Carousel({ models, titleComponent: TitleComponent }) {
           gl={{ alpha: true, antialias: true }}
           style={{ background: 'transparent' }}
         >
-          <Suspense fallback={null}>
-            <ambientLight intensity={1} />
-            <pointLight position={[5, 5, 10]} intensity={1} color="#40c9ff" />
-            <directionalLight position={[5, 10, 13]} intensity={1} />
-            <directionalLight position={[0, 0, 1]} intensity={0.3} color="#40c9ff" />
-            {models.map((model, index) => {
-              const { position, scale } = positions[index];
-              const { component: ModelComponent, name } = model;
-              const springProps = useSpring({
-                position,
-                scale,
-                config: { tension: 200, friction: 30 },
-              });
-              return (
-                <InteractiveDisketa
-                  key={index}
-                  initialPosition={position}
-                  floatSpeed={0.5}
-                  amplitude={0.2}
-                  phaseOffset={index}
-                  onClick={() => handleNavigation(name)}
+          <ambientLight intensity={1} />
+          <pointLight position={[5, 5, 10]} intensity={1} color="#40c9ff" />
+          <directionalLight position={[5, 10, 13]} intensity={1} />
+          <directionalLight position={[0, 0, 1]} intensity={0.3} color="#40c9ff" />
+          {models.map((model, index) => {
+            const { position, scale } = positions[index];
+            const { component: ModelComponent, name } = model;
+            const springProps = useSpring({
+              position,
+              scale,
+              config: { tension: 200, friction: 30 },
+            });
+            return (
+              <InteractiveDisketa
+                key={index}
+                initialPosition={position}
+                floatSpeed={0.5}
+                amplitude={0.2}
+                phaseOffset={index}
+                onClick={() => handleNavigation(name)}
+              >
+                <animated.group
+                  position={springProps.position.to((x, y, z) => [x, y, z])}
+                  rotation={[0, -Math.PI / 2, 0]}
+                  scale={springProps.scale}
                 >
-                  <animated.group
-                    position={springProps.position.to((x, y, z) => [x, y, z])}
-                    rotation={[0, -Math.PI / 2, 0]}
-                    scale={springProps.scale}
-                  >
-                    <LazyModel Component={ModelComponent} />
-                  </animated.group>
-                </InteractiveDisketa>
-              );
-            })}
-            <InteractiveDisketa
-              initialPosition={[-1, isMobile ? -0.2 : -1, 0]}
-              floatSpeed={0.5}
-              amplitude={0.2}
-              phaseOffset={0}
-            >
-              <TitleComponent rotation={[-0.15, -Math.PI / 2, 0]} scale={[isMobile ? 1 : 1.5, 0.8, 0.8]} />
-            </InteractiveDisketa>
-          </Suspense>
+                  <ModelComponent />
+                </animated.group>
+              </InteractiveDisketa>
+            );
+          })}
+          <InteractiveDisketa
+            initialPosition={[-1, isMobile ? -0.2 : -1, 0]}
+            floatSpeed={0.5}
+            amplitude={0.2}
+            phaseOffset={0}
+          >
+            <TitleComponent rotation={[-0.15, -Math.PI / 2, 0]} scale={[isMobile ? 1 : 1.5, 0.8, 0.8]} />
+          </InteractiveDisketa>
         </Canvas>
       </div>
     </div>
