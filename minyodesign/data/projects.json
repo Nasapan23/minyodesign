@@ -28,7 +28,8 @@
   {
     "seoRoute": "Unarte",
     "title": "UNARTE",
-"description": "Este important de menționat că acest proiect se bazează pe o identitate vizuală deja existentă. Sistemul de orientare pornește de la conceptul unei buline, în care un text decupat în negativ simbolizează dezvoltarea personală a studenților, așa cum este oferită de Facultatea de Arte din București. Decupajul reflectă perioada în care tinerii artiști își perfecționează abilitățile sub îndrumarea unui cadru didactic pregătit. Sistemul de orientare evidențiază zona Atelierelor, unde facultatea desfășoară cursurile practice, folosind simboluri minimaliste ce reprezintă spațiile fiecărui atelier aparținând diferitelor secții. Paleta de culori a fost aleasă pe baza unui studiu al materialelor utilizate de fiecare secție și al simbolisticii culorilor reprezentative. De asemenea, s-au creat panouri de orientare poziționate la intrările spațiilor și clădirilor principale, pentru a facilita ghidarea vizitatorilor și studenților către destinațiile dorite.",    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "description": "Este important de menționat că acest proiect se bazează pe o identitate vizuală deja existentă. Sistemul de orientare pornește de la conceptul unei buline, în care un text decupat în negativ simbolizează dezvoltarea personală a studenților, așa cum este oferită de Facultatea de Arte din București. Decupajul reflectă perioada în care tinerii artiști își perfecționează abilitățile sub îndrumarea unui cadru didactic pregătit. Sistemul de orientare evidențiază zona Atelierelor, unde facultatea desfășoară cursurile practice, folosind simboluri minimaliste ce reprezintă spațiile fiecărui atelier aparținând diferitelor secții. Paleta de culori a fost aleasă pe baza unui studiu al materialelor utilizate de fiecare secție și al simbolisticii culorilor reprezentative. De asemenea, s-au creat panouri de orientare poziționate la intrările spațiilor și clădirilor principale, pentru a facilita ghidarea vizitatorilor și studenților către destinațiile dorite.",
+    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
     "galleryImages": [
       "/images/projects/unarte/1.webp",
       "/images/projects/unarte/2.webp",
@@ -39,6 +40,36 @@
       "/images/projects/unarte/7.webp",
       "/images/projects/unarte/8.webp",
       "/images/projects/unarte/9.webp"
+    ]
+  },
+  {
+    "seoRoute": "comcaffee",
+    "title": "Comcaffee",
+    "description": "Com.Caffe reprezintă un lanț de cafenele dedicate co-working-ului în domeniul IT, locația dispunând de spații special amenajate pentru a facilita un mediu plăcut unde să îți desfășori activitățile online. Dispune, desigur, și de un bar unde poți comanda băuturi calde și reci de diferite tipuri. Culorile și design-ul identității vizuale sunt inspirate din combinația celor două idei de bază: cafeaua și partea digitală.În plus, Com.Caffe joacă un rol important în crearea de conexiuni între persoanele care, din cauza muncii remote, ajung deseori să se izoleze. Aceste spații oferă o oportunitate unică de interacțiune și socializare, încurajând profesioniștii să iasă din zona de confort și să construiască relații autentice, într-un mediu care îmbină perfect relaxarea cu productivitatea.",
+    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "galleryImages": [
+      "/images/projects/comcaffe/1.webp",
+      "/images/projects/comcaffe/2.webp",
+      "/images/projects/comcaffe/3.webp",
+      "/images/projects/comcaffe/4.webp",
+      "/images/projects/comcaffe/5.webp",
+      "/images/projects/comcaffe/6.webp",
+      "/images/projects/comcaffe/7.webp"
+    ]
+  },
+  {
+    "seoRoute": "Targoviste",
+    "title": "Targoviste",
+    "description": "Un sistem de identitate vizuală bazat pe forme geometrice, inspirat de conceptul jocului Tangram, în care formele sunt reorganizate pentru a crea o pictogramă ce ilustrează zonele turistice ale orașului. Acest sistem de identitate are ca scop promovarea și sprijinirea dezvoltării turistice a orașului Târgoviște. Formele geometrice din logo sunt reconfigurate pentru a reprezenta atracțiile și zonele cheie destinate vizitatorilor. În plus, designul include un pattern distinctiv bazat pe aceleași forme geometrice, ideal pentru aplicare pe produse variate, de la materiale publicitare la orice tip de suvenir. Paleta de culori este atent aleasă, reflectând nuanțele caracteristice ale ruinelor istorice, simbolizând patrimoniul turistic și cultural al orașului.",
+    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "galleryImages": [
+      "/images/projects/targoviste/1.webp",
+      "/images/projects/targoviste/2.webp",
+      "/images/projects/targoviste/3.webp",
+      "/images/projects/targoviste/4.webp",
+      "/images/projects/targoviste/5.webp",
+      "/images/projects/targoviste/6.webp",
+      "/images/projects/targoviste/7.webp"
     ]
   }
 ]

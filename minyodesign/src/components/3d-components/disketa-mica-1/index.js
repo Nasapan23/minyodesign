@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useGLTF } from '@react-three/drei';
-import FakeGlowMaterial from '@/utils/FakeGlowMaterial';
 
 export function DisketaMica1({ position = [0, 0, 0], scale = [1, 1, 1], rotation = [0, 0, 0] }) {
 
@@ -25,8 +24,7 @@ export function DisketaMica1({ position = [0, 0, 0], scale = [1, 1, 1], rotation
         geometry={nodes.rama_exterioara.geometry}
         material={materials['Material.002']}
         rotation={[Math.PI / 2, 0, 0]}
-      >
-        </mesh>
+      />
       <mesh
         castShadow
         receiveShadow
