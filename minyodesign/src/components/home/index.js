@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useEffect } from 'react';
 import useGlobalLoading from '@/hooks/GlobalLoading';
 import LoadingScreen from '@/components/loadingScreen';
@@ -12,32 +11,46 @@ import M3DCarousel from '@/components/portofolio/3dmodelling';
 import CarteDeVizitaPart from '../carte-vizita';
 
 const Home = () => {
-  const isLoading = useGlobalLoading(); // Hook to track global loading
-  console.log(isLoading); // Debugging loading state
+  const isLoading = useGlobalLoading();
 
-  // Disable scrolling while loading
+  useEffect(() => {
+    if (!isLoading) {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  }, [isLoading]);
+
   useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = ''; // Restore scrolling
+      document.body.style.overflow = '';
     }
-    return () => (document.body.style.overflow = ''); // Cleanup
+    return () => (document.body.style.overflow = '');
   }, [isLoading]);
 
   return (
     <div style={{ position: 'relative' }}>
-      {isLoading && <LoadingScreen />} {/* Show loading overlay */}
-      
-      {/* Render app content behind the loading screen */}
+      {isLoading && <LoadingScreen />}
       <Navigation />
-      <CloudyOverlay mode="double">
-        <LogoPart />
-      </CloudyOverlay>
-      <Prezentare />
-      <GraphicDesignCarousel />
-      <M3DCarousel />
-      <CarteDeVizitaPart/>
+      <div id="acasa">
+        <CloudyOverlay mode="double">
+          <LogoPart />
+        </CloudyOverlay>
+      </div>
+      <div id="desprenoi">
+        <Prezentare />
+      </div>
+      <div id="portofoliu">
+        <GraphicDesignCarousel />
+        <M3DCarousel />
+      </div>
+      <CarteDeVizitaPart />
     </div>
   );
 };

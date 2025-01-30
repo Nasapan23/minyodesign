@@ -1,13 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/navigation';
 import CloudyOverlay from '@/components/cloudOverlay/cloudOverlay';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { motion } from 'framer-motion';
+import LoadingScreen from '@/components/loadingScreen';
 
 export default function ProjectClientComponent({ projectData }) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <>
       <Navigation />

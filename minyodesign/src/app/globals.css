@@ -3,7 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body {
+  font-family: var(--font-lato), sans-serif;
+}
 /* Custom Scrollbar Styles for WebKit Browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 12px;

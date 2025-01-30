@@ -71,5 +71,49 @@
       "/images/projects/targoviste/6.webp",
       "/images/projects/targoviste/7.webp"
     ]
-  }
+  },
+  {
+    "seoRoute": "Oala",
+    "title": "Oală Tradițională",
+    "description": "Oală Tradițională este un serviciu de livrare de mâncare tradițională românească în București, care aduce gusturile autentice direct la ușa ta. Gătește preparate tradiționale cu ingrediente proaspete și atent alese, pregătite chiar în ziua livrării. Printre felurile de mâncare se numără ciorbe, fripturi, mâncăruri la oală, dar și diverse garnituri și deserturi, toate pregătite conform rețetelor tradiționale. Serviciul oferă livrare rapidă, iar comenzile sunt ambalate cu grijă pentru a ajunge intacte.Logo-ul, ce înfățișează o oală tradițională pictată cu motive românești, reflectă autenticitatea și căldura produselor tradiționale printr-o paletă de culori calde. Acesta surprinde esența gastronomiei românești, aducând în prim-plan legătura dintre meșteșugul vechi și plăcerile culinare ale prezentului.",
+    "logoImage": "/images/logos/logo-oala.png",
+    "galleryImages": [
+      "/images/projects/oala-traditionala/1.webp",
+      "/images/projects/oala-traditionala/2.webp",
+      "/images/projects/oala-traditionala/3.webp",
+      "/images/projects/oala-traditionala/4.webp",
+      "/images/projects/oala-traditionala/5.webp"
+    ]
+  },
+  {
+    "seoRoute": "Culinary",
+    "title": "Culinary Creation",
+    "description": " Prezintă un serviciu exclusivist de catering, dedicat evenimentelor speciale, care aduce la masă preparate sofisticate ce combină tradiția cu inovația. Fiecare eveniment devine o oportunitate de a explora gastronomia românească reinterpretată, gătită din ingrediente locale, proaspete și de cea mai bună calitate.Cu un accent puternic pe detalii și prezentare, fiecare preparat este creat pentru a oferi nu doar o masă, ci o adevărată experiență culinară.Prin abordarea sa personalizată, Culinary Creation transformă fiecare ocazie în ceva deosebit, aducând laolaltă gusturi tradiționale și tehnici moderne, într-o formă sofisticată care răspunde cerințelor și preferințelor fiecărui client.",
+    "logoImage": "/images/logos/Logo-culinary-creations.webp",
+    "galleryImages": [
+      "/images/projects/culinary/1.png",
+      "/images/projects/culinary/2.png",
+      "/images/projects/culinary/3.png",
+      "/images/projects/culinary/4.png",
+      "/images/projects/culinary/5.png",
+      "/images/projects/culinary/6.png",
+      "/images/projects/culinary/7.png"
+
+    ]
+  },
+  {
+    "seoRoute": "Crypto",
+    "title": "Riga Crypto",
+    "description": "Un sistem de identitate vizuală bazat pe forme geometrice, inspirat de conceptul jocului Tangram, în care formele sunt reorganizate pentru a crea o pictogramă ce ilustrează zonele turistice ale orașului. Acest sistem de identitate are ca scop promovarea și sprijinirea dezvoltării turistice a orașului Târgoviște. Formele geometrice din logo sunt reconfigurate pentru a reprezenta atracțiile și zonele cheie destinate vizitatorilor. În plus, designul include un pattern distinctiv bazat pe aceleași forme geometrice, ideal pentru aplicare pe produse variate, de la materiale publicitare la orice tip de suvenir. Paleta de culori este atent aleasă, reflectând nuanțele caracteristice ale ruinelor istorice, simbolizând patrimoniul turistic și cultural al orașului.",
+    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "galleryImages": [
+      "/images/projects/targoviste/1.webp",
+      "/images/projects/targoviste/2.webp",
+      "/images/projects/targoviste/3.webp",
+      "/images/projects/targoviste/4.webp",
+      "/images/projects/targoviste/5.webp",
+      "/images/projects/targoviste/6.webp",
+      "/images/projects/targoviste/7.webp"
+    ]
+  },
 ]
