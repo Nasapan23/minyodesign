@@ -59,7 +59,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
               <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -96,7 +96,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
        <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -141,7 +141,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
       <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -157,7 +157,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
      >
         <FakeGlowMaterial
-          glowColor="#fffff" // Blue color
+          glowColor="#ffffff" // Blue color
           glowInternalRadius={0.5}
           glowSharpness={1}
           falloff={0.2}
@@ -204,7 +204,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
               <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -220,7 +220,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
               <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -236,7 +236,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
               <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -252,7 +252,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
               <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
@@ -268,7 +268,7 @@ export default function DisketaAtelier({
         rotation={[Math.PI / 2, 0, 0]}
       >
               <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}

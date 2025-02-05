@@ -9,6 +9,7 @@ import Prezentare from '@/components/presentation';
 import GraphicDesignCarousel from '@/components/portofolio/graphicDesign';
 import M3DCarousel from '@/components/portofolio/3dmodelling';
 import CarteDeVizitaPart from '../carte-vizita';
+import Footer from '../footer';
 
 const Home = () => {
   const isLoading = useGlobalLoading();
@@ -51,6 +52,7 @@ const Home = () => {
         <M3DCarousel />
       </div>
       <CarteDeVizitaPart />
+      <Footer/>
     </div>
   );
 };

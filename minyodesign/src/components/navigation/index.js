@@ -50,6 +50,7 @@ export default function Navigation() {
           width={90}
           height={90}
           className="w-20 h-20"
+          priority
         />
       </button>
 

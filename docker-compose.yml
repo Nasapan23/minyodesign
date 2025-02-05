@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  minyodesign:
+    build: .
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"  # Expune portul 3000 pe care Next.js rulează
+    networks:
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.minyodesign.rule=Host(`minyodesign.example.com`)"  # Traefik routing
+      - "traefik.http.services.minyodesign.loadbalancer.server.port=3000"
+      
+networks:
+  minyodes-network:
+    driver: bridge

@@ -103,3 +103,11 @@ animation:move-clouds-back 200s linear infinite;
   align-items: center;
   z-index: 9999; /* Ensure it appears above other content */
 }
+.text-motto {
+  background: linear-gradient(90deg, #4D457E, #958EC0, #352B59);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-align: center;
+}

@@ -19,7 +19,9 @@ export async function generateStaticParams() {
 }
 
 export default async function ProjectPage({ params }) {
-  const projectData = await getProjectData(params.seoRoute);
+  const { seoRoute } = await params; // Correct way to await params
+
+  const projectData = await getProjectData(seoRoute);
 
   if (!projectData) {
     return <div>Project not found</div>;

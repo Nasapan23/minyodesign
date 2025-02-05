@@ -1,12 +1,13 @@
-'use client';
+"use client";
+import React, { useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import CarteVizitaModel from "../3d-components/carte-de-vizita";
+import TitluContact from "../3d-components/proiecte/titlu/titlu-contact";
+import useIsMobile from "@/hooks/UseIsMobile";
+import * as THREE from "three";
+import FloatingClouds from "../floating-cloud";
 
-import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import CarteVizitaModel from '../3d-components/carte-de-vizita';
-import TitluContact from '../3d-components/proiecte/titlu/titlu-contact';
-import useIsMobile from '@/hooks/UseIsMobile';
-import * as THREE from 'three';
-
+// InteractiveDisketa
 const InteractiveDisketa = React.memo(function InteractiveDisketa({
   children,
   initialPosition,
@@ -26,14 +27,31 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
     const mouseY = (mouse.y * viewport.height) / 2;
 
     if (hovered && !isMobile) {
-      ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, mouseY * 0.02, 0.1);
-      ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, mouseX * 0.02, 0.1);
+      ref.current.rotation.x = THREE.MathUtils.lerp(
+        ref.current.rotation.x,
+        mouseY * 0.02,
+        0.1
+      );
+      ref.current.rotation.y = THREE.MathUtils.lerp(
+        ref.current.rotation.y,
+        mouseX * 0.02,
+        0.1
+      );
     } else {
-      ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, originalRotation.x, 0.1);
-      ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, originalRotation.y, 0.1);
+      ref.current.rotation.x = THREE.MathUtils.lerp(
+        ref.current.rotation.x,
+        originalRotation.x,
+        0.1
+      );
+      ref.current.rotation.y = THREE.MathUtils.lerp(
+        ref.current.rotation.y,
+        originalRotation.y,
+        0.1
+      );
     }
 
-    ref.current.position.y = initialPosition[1] + Math.sin(time * floatSpeed + phaseOffset) * amplitude;
+    ref.current.position.y =
+      initialPosition[1] + Math.sin(time * floatSpeed + phaseOffset) * amplitude;
   });
 
   return (
@@ -48,10 +66,10 @@ const InteractiveDisketa = React.memo(function InteractiveDisketa({
   );
 });
 
+// FloatingCard
 const FloatingCard = ({ position, rotation, scale }) => {
   const cardRef = useRef();
   const [hovered, setHovered] = useState(false);
-
   const randomOffsetX = useRef(Math.random() * Math.PI * 2);
   const randomOffsetY = useRef(Math.random() * Math.PI * 2);
 
@@ -60,6 +78,7 @@ const FloatingCard = ({ position, rotation, scale }) => {
     const floatX = Math.sin(elapsedTime * 1.5 + randomOffsetX.current) * 0.1;
     const floatY = Math.cos(elapsedTime * 1.2 + randomOffsetY.current) * 0.1;
 
+    // On hover, shift the card slightly to the right
     const targetX = hovered ? position[0] + 0.3 : position[0] + floatX;
     const targetY = position[1] + floatY;
 
@@ -67,11 +86,15 @@ const FloatingCard = ({ position, rotation, scale }) => {
     cardRef.current.position.y += (targetY - cardRef.current.position.y) * 0.1;
 
     if (hovered) {
-      cardRef.current.rotation.x += (rotation[0] - cardRef.current.rotation.x) * 0.1;
-      cardRef.current.rotation.y += (rotation[1] + Math.sin(elapsedTime * 3) * 0.05 - cardRef.current.rotation.y) * 0.1;
+      cardRef.current.rotation.x +=
+        (rotation[0] - cardRef.current.rotation.x) * 0.1;
+      cardRef.current.rotation.y +=
+        (rotation[1] + Math.sin(elapsedTime * 3) * 0.05 - cardRef.current.rotation.y) * 0.1;
     } else {
-      cardRef.current.rotation.x += (rotation[0] - cardRef.current.rotation.x) * 0.1;
-      cardRef.current.rotation.y += (rotation[1] - cardRef.current.rotation.y) * 0.1;
+      cardRef.current.rotation.x +=
+        (rotation[0] - cardRef.current.rotation.x) * 0.1;
+      cardRef.current.rotation.y +=
+        (rotation[1] - cardRef.current.rotation.y) * 0.1;
     }
   });
 
@@ -89,17 +112,46 @@ const FloatingCard = ({ position, rotation, scale }) => {
   );
 };
 
-const CarteDeVizitaPart = () => {
+// Main Component
+export default function CarteDeVizitaPart() {
   const isMobile = useIsMobile();
 
+  // Title scale smaller on mobile
+  const titleScale = isMobile ? [0.45, 0.45, 0.45] : [1, 0.9, 0.9];
+
+  const titlePosition = isMobile ? [-0.5, 2, 0] : [-1, -1, 0];
+
+
+  // Different positions & scales for mobile vs. desktop
+  const cardScale = isMobile ? [0.035, 0.035, 0.035] : [0.06, 0.06, 0.06];
+
+  // Stack the cards vertically on mobile (one under the other).
+  const cardPositions = isMobile
+    ? [
+        [-1.5, 1, 0],    // first card on mobile
+        [1.5, -2.4, 0],  // second card on mobile
+      ]
+    : [
+        [0, -2, 0],        // first card on desktop
+        [0, -2.5, -0.5],   // second card on desktop
+      ];
+
   return (
-    <div className={`flex ${isMobile ? 'flex-col items-center' : 'items-center justify-center'} h-screen`}>
-      <div style={{ height: '100vh', width: '100vw', top: 0, left: 0 }}>
-        <Canvas
-          shadows
-          gl={{ alpha: true }}
-          camera={{ position: [0, 0, 10], fov: 50 }}
-        >
+    <div className="relative w-screen h-screen">
+      {/* Clouds behind everything (z-0) */}
+      <div className="absolute inset-0 z-0">
+        <FloatingClouds
+          cloudNumber={5}
+          minSize={1}
+          maxSize={1.7}
+          minSpeed={80}
+          maxSpeed={100}
+        />
+      </div>
+
+      {/* Canvas on top (z-10) */}
+      <div className="absolute inset-0 z-10">
+        <Canvas shadows gl={{ alpha: true }} camera={{ position: [0, 0, 10], fov: 50 }}>
           <ambientLight intensity={1} />
           <pointLight position={[5, 5, 10]} intensity={1} color="#ffffff" />
           <directionalLight position={[5, 10, 13]} intensity={1} />
@@ -107,32 +159,26 @@ const CarteDeVizitaPart = () => {
 
           {/* Interactive Title */}
           <InteractiveDisketa
-            initialPosition={[isMobile ? -0.5 : -1.25, isMobile ? 2.3 : -1, 0]} // Adjusted position for mobile
+            initialPosition={titlePosition}
             floatSpeed={0.5}
             amplitude={0.2}
-            phaseOffset={0}
           >
-            <TitluContact
-              rotation={[-0.15, -Math.PI / 2, 0]}
-              scale={isMobile ? [0.4, 0.4, 0.4] : [1, 0.9, 0.9]} // Scale down for mobile
-            />
+            <TitluContact rotation={[-0.15, -Math.PI / 2, 0]} scale={titleScale} />
           </InteractiveDisketa>
 
-          {/* Floating cards */}
+          {/* Floating cards (adjusted for mobile & desktop) */}
           <FloatingCard
-            position={[isMobile ? -1.7 : 0, isMobile ? 1 : -2, 0]} // Adjusted vertical stacking for mobile
+            position={cardPositions[0]}
             rotation={[0, 0, -Math.PI / 6 + 0.3]}
-            scale={[isMobile ? 0.035 : 0.06, isMobile ? 0.035 : 0.06, isMobile ? 0.035 : 0.06]} // Scale down cards for mobile
+            scale={cardScale}
           />
           <FloatingCard
-            position={[isMobile ? 1.7  : 0, isMobile ? -2 : -2.5, -0.5]} // Place one card below another for mobile
+            position={cardPositions[1]}
             rotation={[0, Math.PI, -Math.PI / 6 + 0.3]}
-            scale={[isMobile ? 0.035 : 0.06, isMobile ? 0.035 : 0.06, isMobile ? 0.035 : 0.06]} // Scale down cards for mobile
+            scale={cardScale}
           />
         </Canvas>
       </div>
     </div>
   );
-};
-
-export default CarteDeVizitaPart;
+}

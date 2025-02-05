@@ -1,7 +1,9 @@
 'use client';
+
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Model } from '@/components/3d-components/logo';
+import FloatingClouds from '../floating-cloud';
 
 const RotatingModel = () => {
   const groupRef = useRef();
@@ -22,7 +24,7 @@ const RotatingModel = () => {
 
 const LogoPart = () => {
   return (
-    <div className="relative flex items-center justify-center h-screen w-full">
+    <div className="relative flex flex-col items-center justify-center h-screen w-full">
       <div
         style={{
           height: '100%',

@@ -3,7 +3,7 @@
     "seoRoute": "Photomad",
     "title": "Photomad",
     "description": "PhotoMaD este o firmă de fotografie profesionistă specializată în capturarea momentelor de neuitat din evenimente importante. Cu o abordare artistică și un ochi atent pentru detalii, PhotoMaD transformă fiecare fotografie într-o poveste vie, surprinzând esența momentelor autentice și emoționale. Motto-ul lor, „O fotografie este acea parte dintr-o secundă care îți spune o poveste”, reflectă filozofia lor de a crea imagini care nu doar documentează, ci și evocă sentimente, amintiri și trăiri unice. Indiferent că este vorba despre nunți, evenimente corporative sau petreceri private, PhotoMaD îți oferă mai mult decât simple fotografii – îți oferă povești vizuale care rămân vii în timp.",
-    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "logoImage": "/images/logos/logo-photomad.webp",
     "galleryImages": [
       "https://placehold.co/500x500?text=Image+1",
       "https://placehold.co/500x500?text=Image+2",
@@ -15,7 +15,7 @@
     "seoRoute": "Piggy",
     "title": "Piggy Boutique",
     "description": "Pyggy's Boutique este un brand de haine unicat care prinde viață prin mascotă sa animată, Piggy. Ilustrațiile captivante îl prezintă pe Piggy în diverse ipostaze creative și pline de culoare, explorând activități cotidiene și momente inspiraționale. Fiecare design este menit să aducă un strop de bucurie și să încurajeze oamenii să își urmeze visele. La Pyggy's Boutique, moda întâlnește imaginația, iar fiecare colecție spune o poveste, transmițând un mesaj de optimism și libertate.",
-    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "logoImage": "/images/logos/logo-piggy.webp",
     "galleryImages": [
       "/images/projects/piggy/1.webp",
       "/images/projects/piggy/2.webp",
@@ -29,7 +29,7 @@
     "seoRoute": "Unarte",
     "title": "UNARTE",
     "description": "Este important de menționat că acest proiect se bazează pe o identitate vizuală deja existentă. Sistemul de orientare pornește de la conceptul unei buline, în care un text decupat în negativ simbolizează dezvoltarea personală a studenților, așa cum este oferită de Facultatea de Arte din București. Decupajul reflectă perioada în care tinerii artiști își perfecționează abilitățile sub îndrumarea unui cadru didactic pregătit. Sistemul de orientare evidențiază zona Atelierelor, unde facultatea desfășoară cursurile practice, folosind simboluri minimaliste ce reprezintă spațiile fiecărui atelier aparținând diferitelor secții. Paleta de culori a fost aleasă pe baza unui studiu al materialelor utilizate de fiecare secție și al simbolisticii culorilor reprezentative. De asemenea, s-au creat panouri de orientare poziționate la intrările spațiilor și clădirilor principale, pentru a facilita ghidarea vizitatorilor și studenților către destinațiile dorite.",
-    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "logoImage": "/images/logos/logo-unarte.webp",
     "galleryImages": [
       "/images/projects/unarte/1.webp",
       "/images/projects/unarte/2.webp",
@@ -43,10 +43,10 @@
     ]
   },
   {
-    "seoRoute": "comcaffee",
+    "seoRoute": "Comcaffee",
     "title": "Comcaffee",
     "description": "Com.Caffe reprezintă un lanț de cafenele dedicate co-working-ului în domeniul IT, locația dispunând de spații special amenajate pentru a facilita un mediu plăcut unde să îți desfășori activitățile online. Dispune, desigur, și de un bar unde poți comanda băuturi calde și reci de diferite tipuri. Culorile și design-ul identității vizuale sunt inspirate din combinația celor două idei de bază: cafeaua și partea digitală.În plus, Com.Caffe joacă un rol important în crearea de conexiuni între persoanele care, din cauza muncii remote, ajung deseori să se izoleze. Aceste spații oferă o oportunitate unică de interacțiune și socializare, încurajând profesioniștii să iasă din zona de confort și să construiască relații autentice, într-un mediu care îmbină perfect relaxarea cu productivitatea.",
-    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "logoImage": "/images/logos/logo-comcaffe.webp",
     "galleryImages": [
       "/images/projects/comcaffe/1.webp",
       "/images/projects/comcaffe/2.webp",
@@ -61,7 +61,7 @@
     "seoRoute": "Targoviste",
     "title": "Targoviste",
     "description": "Un sistem de identitate vizuală bazat pe forme geometrice, inspirat de conceptul jocului Tangram, în care formele sunt reorganizate pentru a crea o pictogramă ce ilustrează zonele turistice ale orașului. Acest sistem de identitate are ca scop promovarea și sprijinirea dezvoltării turistice a orașului Târgoviște. Formele geometrice din logo sunt reconfigurate pentru a reprezenta atracțiile și zonele cheie destinate vizitatorilor. În plus, designul include un pattern distinctiv bazat pe aceleași forme geometrice, ideal pentru aplicare pe produse variate, de la materiale publicitare la orice tip de suvenir. Paleta de culori este atent aleasă, reflectând nuanțele caracteristice ale ruinelor istorice, simbolizând patrimoniul turistic și cultural al orașului.",
-    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "logoImage": "/images/logos/logo-targoviste.webp",
     "galleryImages": [
       "/images/projects/targoviste/1.webp",
       "/images/projects/targoviste/2.webp",
@@ -104,16 +104,117 @@
   {
     "seoRoute": "Crypto",
     "title": "Riga Crypto",
-    "description": "Un sistem de identitate vizuală bazat pe forme geometrice, inspirat de conceptul jocului Tangram, în care formele sunt reorganizate pentru a crea o pictogramă ce ilustrează zonele turistice ale orașului. Acest sistem de identitate are ca scop promovarea și sprijinirea dezvoltării turistice a orașului Târgoviște. Formele geometrice din logo sunt reconfigurate pentru a reprezenta atracțiile și zonele cheie destinate vizitatorilor. În plus, designul include un pattern distinctiv bazat pe aceleași forme geometrice, ideal pentru aplicare pe produse variate, de la materiale publicitare la orice tip de suvenir. Paleta de culori este atent aleasă, reflectând nuanțele caracteristice ale ruinelor istorice, simbolizând patrimoniul turistic și cultural al orașului.",
-    "logoImage": "https://placehold.co/500x500?text=Project+One+Logo",
+    "description": "Reinterpretarea moderna a poeziei Riga Crypto și Lapona Enigel scrisă de Ion Barbu.Poezia a fost reinterpretată sub formă unui comic book modern, cu o influență puternică din stilul Manga. Replicile sunt inspirate din poezie și adaptate sub formă de dialog sau text descriptiv.Acest proiect are ca scop reinterpretarea modernă a operelor culturale clasice, care devin tot mai puțin apreciate pe măsură ce noile generații își pierd interesul pentru lectură. Prin această inițiativă, ne propunem să revitalizăm, într-o manieră creativă, învățăturile morale și lecțiile de viață ce stau la baza acestor povești, readucându-le în atenția publicului într-un mod captivant și relevant.",
+    "logoImage": "/images/logos/logo-riga.webp",
     "galleryImages": [
-      "/images/projects/targoviste/1.webp",
-      "/images/projects/targoviste/2.webp",
-      "/images/projects/targoviste/3.webp",
-      "/images/projects/targoviste/4.webp",
-      "/images/projects/targoviste/5.webp",
-      "/images/projects/targoviste/6.webp",
-      "/images/projects/targoviste/7.webp"
+      "/images/projects/riga/1.webp",
+      "/images/projects/riga/2.webp",
+      "/images/projects/riga/3.webp",
+      "/images/projects/riga/4.webp",
+      "/images/projects/riga/5.webp",
+      "/images/projects/riga/6.webp",
+      "/images/projects/riga/7.webp",
+      "/images/projects/riga/8.webp",
+      "/images/projects/riga/9.webp",
+      "/images/projects/riga/10.webp",
+      "/images/projects/riga/11.webp",
+      "/images/projects/riga/12.webp",
+      "/images/projects/riga/13.webp",
+      "/images/projects/riga/14.webp",
+      "/images/projects/riga/15.webp"
     ]
   },
+  {
+    "seoRoute": "Artfun",
+    "title": "ArtFun Caffe",
+    "description": "ArtFunCaffe este un stand de cafea situat în mall-ul Liberty Center din București, unde vizitatorii se pot bucura de cafea de calitate, iar pe suprafața băuturii sunt realizate desene creative. Acest loc este ideal pentru cei care doresc să facă o pauză de la cumpărături și să se relaxeze într-un cadru prietenos. ArtFunCaffe oferă o experiență unică, combinând plăcerea cafelei cu un moment de răsfăț vizual, oferind o atmosferă plăcută și energizantă.Această cafenea este o extensie a unei școli de muzică situată în aceeași locație și a fost inițial dezvoltată pentru părinții care își aduceau sau așteptau copiii.",
+    "logoImage": "/images/logos/logo-artFun.webp",
+    "galleryImages": [
+      "/images/projects/artfun/1.webp",
+      "/images/projects/artfun/2.webp",
+      "/images/projects/artfun/3.webp",
+      "/images/projects/artfun/4.webp",
+      "/images/projects/artfun/5.webp",
+      "/images/projects/artfun/6.webp",
+      "/images/projects/artfun/7.webp",
+      "/images/projects/artfun/8.webp"
+    ]
+  },
+  {
+    "seoRoute": "Atelier",
+    "title": "Atelierul In Culori",
+    "description": "Atelierul în Culori este o afacere dedicată creării de decoruri de interior din licheni, specializată în amenajarea spațiilor publice și de birouri. Lichenii sunt organisme naturale care nu necesită apă sau lumina directă pentru a se menține, făcându-i o alegere ideală pentru decoruri durabile și ușor de întreținut. Aceștia sunt disponibili într-o gamă largă de culori și texturi, fiind utilizați pentru a crea compoziții decorative unice, care aduc o notă de prospețime și natură în orice spațiu.Misiunea atelierului este de a aduce frumusețea naturală în viața cotidiană prin ornamente cu culori vii și armonioase, menite să transforme orice încăpere într-un mediu cald și relaxant. Lichenii nu doar că îmbunătățesc estetica spațiilor, dar au și beneficii suplimentare, cum ar fi îmbunătățirea calității aerului și reducerea zgomotului ambiental, contribuind la crearea unui ambient plăcut și revitalizant, ideal pentru desfășurarea activităților de zi cu zi.",
+    "logoImage": "/images/logos/logo-atelier.webp",
+    "galleryImages": [
+      "/images/projects/at-in-culori/1.webp",
+      "/images/projects/at-in-culori/2.webp",
+      "/images/projects/at-in-culori/3.webp",
+      "/images/projects/at-in-culori/4.webp",
+      "/images/projects/at-in-culori/5.webp"
+    ]
+  },
+  {
+    "seoRoute": "Pizza",
+    "title": "Pizza Suprema",
+    "description": "Pizza Suprema este o afacere de familie din Cheltenham, care aduce pizza autentică napolitană, servită dintr-o furgonetă personalizată ce călătorește prin diverse locații din zonă.Fiecare pizza este pregătită cu ingrediente proaspete și de calitate superioară, urmând tradițiile culinare italiene. Motto-ul „Taste the tradition!” reflectă dedicarea lor față de păstrarea autenticității în prepararea pizzei napolitane, aducând în farfurie o combinație perfectă de arome naturale, gătite după tehnici tradiționale.Pizza Suprema nu se rezumă doar la pizza de calitate – oferă o experiență completă, caracterizată de ospitalitatea caldă și primitoare a echipei. Furgoneta personalizată este însoțită de spații amenajate cu grijă, care creează o atmosferă relaxantă și prietenoasă, perfectă pentru a savura pizza într-un cadru confortabil. Indiferent dacă te oprești pentru o masă rapidă sau vrei să petreci timp în compania prietenilor, Pizza Suprema te întâmpină cu zâmbetul pe buze și o atmosferă care face fiecare vizită de neuitat​",
+    "logoImage": "/images/logos/Logo-pizza-suprema.webp",
+    "galleryImages": [
+      "/images/projects/pizza-suprema/1.webp",
+      "/images/projects/pizza-suprema/2.webp",
+      "/images/projects//pizza-suprema/3.webp",
+      "/images/projects/pizza-suprema/4.webp",
+      "/images/projects/pizza-suprema/5.webp",
+      "/images/projects/pizza-suprema/6.webp"
+    ]
+  },
+  {
+    "seoRoute": "Muzzle",
+    "title": "Muzzle",
+    "description": "Puzzle-ul din cupru și plastic, având un cap de urs panda și detalii gravate, oferă o experiență tactilă unică pentru persoanele nevăzătoare. Gravurile fac jocul accesibil și educativ, iar combinația de materiale adaugă un plus de creativitate.Puzzle-ul este format din bucăți de alamă și plastic, care se completează perfect când sunt așezate corect. Cutia din plastic dur, cu izolație termică, conține o rezistență încălzită acoperită de o tablă subțire de aluminiu. Căldura se transmite prin pinii de alamă integrați în puzzle, ajungând la piesele finale. Atunci când sunt plasate corect, acestea se încălzesc, oferind un feedback senzorial ce confirmă potrivirea.Această invenție ingenioasă combină jocul cu o experiență multisenzorială captivantă și interactivă.​",
+    "logoImage":"/images/projects/muzzle/2.webp",
+    "galleryImages": [
+      "/images/projects/muzzle/1.webp",
+      "/images/projects/muzzle/4.webp",
+      "/images/projects/muzzle/5.webp",
+      "/images/projects/muzzle/6.webp"
+    ]
+  },
+  {
+    "seoRoute": "UPS",
+    "title": "UPS - SavConcept",
+    "description": "Proiectul realizat pentru compania SavConcept constă în modelarea 3D a unei unități UPS comercializate de aceasta. Modelele 3D sunt utilizate pentru randări de înaltă calitate, destinate materialelor publicitare, și sunt disponibile pe site-ul oficial SavConcept.com, oferind clienților posibilitatea de a analiza în detaliu designul și caracteristicile produsului.​",
+    "logoImage":"/images/projects/ups/2.webp",
+    "galleryImages": [
+      "/images/projects/ups/1.webp",
+      "/images/projects/ups/3.webp",
+      "/images/projects/ups/4.webp",
+      "/images/projects/ups/5.webp",
+      "/images/projects/ups/6.webp",
+      "/images/projects/ups/7.webp"
+    ]
+  },
+  {
+    "seoRoute": "Calle",
+    "title": "Calla",
+    "description": "Colecția Calla reprezintă una dintre cele mai distinctive și apreciate linii ale brandului Annamaria Cammilli. Bijuteriile din această colecție se remarcă prin forme fluide și elegante, inspirate din esența naturală a florii de cală. Fiecare piesă este realizată cu măiestrie prin tehnici artizanale de prelucrare, reflectând o atenție excepțională la detalii.Menționăm că nu revendicăm designul original al acestor creații; proiectul nostru reprezintă exclusiv o reproducere digitală 3D, realizată ca exercițiu de modelare.​",
+    "logoImage":"/images/projects/calla/1.webp",
+    "galleryImages": [
+      "/images/projects/calla/2.webp",
+      "/images/projects/calla/3.webp",
+      "/images/projects/calla/4.webp",
+      "/images/projects/calla/5.webp"
+    ]
+  },
+  {
+    "seoRoute": "Bench",
+    "title": "Masă de atelier",
+    "description": "Proiectul propune un atelier compact sub forma unei mese de lucru futuriste, dedicată proiectării și asamblării armelor laser. Având o tematică science-fiction, masa de lucru este echipată cu un computer integrat, iluminare ambientală și un laser pentru decupaje și lipituri. Designul îmbină elemente vizuale uzate, sugerând o utilizare îndelungată, și evidențiază un pistol finalizat ca rezultat al procesului de fabricație.​",
+    "logoImage":"/images/projects/bench/1.webp",
+    "galleryImages": [
+      "/images/projects/bench/2.webp",
+      "/images/projects/bench/3.webp",
+      "/images/projects/bench/4.webp",
+      "/images/projects/bench/5.webp"
+    ]
+  }
 ]

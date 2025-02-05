@@ -10,7 +10,7 @@ export default function Calle({
   rotation = [0, 0, 0],
   ...props
 }) {
-  const { nodes = {}, materials = {} } = useGLTF('/3DObjects/m3d//calle.glb');
+  const { nodes = {}, materials = {} } = useGLTF('/3DObjects/m3d/calle.glb');
 
   return (
     <group position={position} scale={scale} rotation={rotation} {...props} dispose={null}>

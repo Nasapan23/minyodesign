@@ -26,7 +26,7 @@ export function DisketaMica2({ position = [0, 0, 0], scale = [1, 1, 1], rotation
         rotation={[Math.PI / 2, 0, 0]}
       >
         {/* <FakeGlowMaterial
-          glowColor="#fffff"
+          glowColor="#ffffff"
           glowInternalRadius={0.5}
           glowSharpness={0.5}
           falloff={0.2}
